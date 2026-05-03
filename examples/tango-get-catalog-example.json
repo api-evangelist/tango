@@ -1,0 +1,49 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.tangocard.com/raas/v2/catalogs",
+    "headers": {
+      "Authorization": "Basic base64(username:password)"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "brands": [
+        {
+          "brandCode": "AMAZ",
+          "brandName": "Amazon",
+          "description": "Amazon.com Gift Cards can be redeemed toward millions of items at Amazon.com",
+          "imageUrls": {
+            "200w-326ppi": "https://cdn.tangocard.com/v2/brands/amazon-200w-326ppi.png",
+            "200w": "https://cdn.tangocard.com/v2/brands/amazon-200w.png"
+          },
+          "items": [
+            {
+              "utid": "U764227",
+              "rewardName": "Amazon.com Gift Card - $25",
+              "currencyCode": "USD",
+              "valueType": "FIXED_VALUE",
+              "faceValue": 25.00,
+              "countries": ["US"],
+              "credentialTypes": ["URL"],
+              "status": "active"
+            },
+            {
+              "utid": "U764228",
+              "rewardName": "Amazon.com Gift Card",
+              "currencyCode": "USD",
+              "valueType": "VARIABLE_VALUE",
+              "minValue": 1.00,
+              "maxValue": 2000.00,
+              "countries": ["US"],
+              "credentialTypes": ["URL"],
+              "status": "active"
+            }
+          ],
+          "status": "active"
+        }
+      ]
+    }
+  }
+}

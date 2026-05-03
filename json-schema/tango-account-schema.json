@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/tango/blob/main/json-schema/tango-account-schema.json",
+  "title": "Tango Account",
+  "description": "Schema for a Tango RaaS API account, which holds a balance used to fund reward orders",
+  "type": "object",
+  "properties": {
+    "accountIdentifier": {
+      "type": "string",
+      "description": "Unique account identifier"
+    },
+    "customerIdentifier": {
+      "type": "string",
+      "description": "Parent customer identifier"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Human-readable account name"
+    },
+    "currencyCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 currency code for the account balance"
+    },
+    "currentBalance": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Current account balance"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive"],
+      "description": "Account status"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": ["accountIdentifier", "customerIdentifier", "displayName", "currencyCode"]
+}

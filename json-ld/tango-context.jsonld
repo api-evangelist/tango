@@ -1,0 +1,60 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "tango": "https://www.tangocard.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Order": "schema:Order",
+    "referenceOrderID": "schema:orderNumber",
+    "orderRefID": "tango:externalReferenceId",
+    "customerIdentifier": "schema:customer",
+    "accountIdentifier": "tango:accountIdentifier",
+    "amount": "schema:price",
+    "currencyCode": "schema:priceCurrency",
+    "status": "schema:orderStatus",
+    "lineItems": "schema:orderedItem",
+    "createdAt": "schema:orderDate",
+
+    "LineItem": "schema:OrderItem",
+    "referenceLineItemId": "schema:identifier",
+    "utid": "tango:universalTokenId",
+    "rewardName": "schema:name",
+    "brandCode": "tango:brandCode",
+    "brandName": "schema:brand",
+    "fulfillment": "tango:fulfillment",
+
+    "Account": "schema:BankAccount",
+    "accountIdentifierField": "schema:identifier",
+    "displayName": "schema:name",
+    "currentBalance": "schema:amount",
+
+    "Customer": "schema:Organization",
+    "customerIdentifierField": "schema:identifier",
+
+    "Brand": "schema:Brand",
+    "brandCodeField": "schema:identifier",
+    "description": "schema:description",
+    "items": "schema:hasOfferCatalog",
+
+    "CatalogItem": "schema:Offer",
+    "valueType": "tango:valueType",
+    "faceValue": "schema:price",
+    "minValue": "schema:minPrice",
+    "maxValue": "schema:maxPrice",
+    "countries": "schema:areaServed",
+    "credentialTypes": "tango:credentialTypes",
+
+    "ExchangeRate": "schema:ExchangeRateSpecification",
+    "exchangeRate": "schema:currentExchangeRate",
+
+    "Recipient": "schema:Person",
+    "Sender": "schema:Person",
+
+    "Fulfillment": "tango:Fulfillment",
+    "fulfillmentType": "tango:fulfillmentType",
+    "redemptionUrl": "schema:url",
+    "cardNumber": "tango:cardNumber",
+    "cardPin": "tango:cardPin"
+  }
+}

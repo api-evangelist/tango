@@ -1,0 +1,284 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Tango Reward Automation"
+  description: >-
+    Workflow capability for automating digital reward and incentive delivery using the
+    Tango RaaS API. Enables loyalty programs, employee recognition platforms, research
+    panels, and consumer incentive applications to send digital gift cards and rewards
+    programmatically. Combines catalog browsing, account management, order placement,
+    and delivery tracking in a unified interface.
+  tags:
+    - Digital Rewards
+    - Gift Cards
+    - Incentives
+    - Loyalty
+    - Rewards As A Service
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+binds:
+  - namespace: env
+    keys:
+      TANGO_USERNAME: TANGO_USERNAME
+      TANGO_PASSWORD: TANGO_PASSWORD
+
+capability:
+  consumes:
+    - import: tango-raas
+      location: ./shared/raas-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: tango-reward-automation-api
+      description: "Unified REST API for automated digital reward and incentive delivery."
+      resources:
+        - path: /v1/customers
+          name: customers
+          description: "Manage reward program customers"
+          operations:
+            - method: GET
+              name: list-customers
+              description: "List all reward program customers"
+              call: "tango-raas.list-customers"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-customer
+              description: "Register a new reward program customer"
+              call: "tango-raas.create-customer"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/accounts
+          name: accounts
+          description: "Manage reward funding accounts"
+          operations:
+            - method: GET
+              name: get-account
+              description: "Get account balance and details"
+              call: "tango-raas.get-account"
+              with:
+                customerIdentifier: "rest.customerIdentifier"
+                accountIdentifier: "rest.accountIdentifier"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-account
+              description: "Create a reward funding account"
+              call: "tango-raas.create-account"
+              with:
+                customerIdentifier: "rest.customerIdentifier"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/catalog
+          name: catalog
+          description: "Browse available digital rewards"
+          operations:
+            - method: GET
+              name: get-catalog
+              description: "Retrieve the full digital reward catalog"
+              call: "tango-raas.get-catalog"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/orders
+          name: orders
+          description: "Place and track reward deliveries"
+          operations:
+            - method: GET
+              name: list-orders
+              description: "List all reward orders"
+              call: "tango-raas.list-orders"
+              with:
+                startDate: "rest.startDate"
+                endDate: "rest.endDate"
+                elements: "rest.elements"
+                offset: "rest.offset"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-order
+              description: "Send a digital reward to a recipient"
+              call: "tango-raas.create-order"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/orders/{id}
+          name: order-by-id
+          description: "Track a specific reward order"
+          operations:
+            - method: GET
+              name: get-order
+              description: "Get reward order status and fulfillment details"
+              call: "tango-raas.get-order"
+              with:
+                referenceOrderID: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/line-items
+          name: line-items
+          description: "View detailed reward delivery records"
+          operations:
+            - method: GET
+              name: list-line-items
+              description: "List all reward line items with credentials"
+              call: "tango-raas.list-line-items"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/exchange-rates
+          name: exchange-rates
+          description: "Currency exchange rates for international rewards"
+          operations:
+            - method: GET
+              name: get-exchange-rates
+              description: "Get current exchange rates"
+              call: "tango-raas.get-exchange-rates"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/reward-countries
+          name: reward-countries
+          description: "Countries where digital rewards are available"
+          operations:
+            - method: GET
+              name: list-reward-countries
+              description: "List supported reward delivery countries"
+              call: "tango-raas.list-reward-countries"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: tango-reward-automation-mcp
+      transport: http
+      description: "MCP server for AI-assisted digital reward and incentive automation."
+      tools:
+        - name: list-customers
+          description: "List all reward program customers in the Tango platform"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.list-customers"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-customer
+          description: "Register a new reward program customer in Tango"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "tango-raas.create-customer"
+          with:
+            customerIdentifier: "tools.customerIdentifier"
+            displayName: "tools.displayName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-account-balance
+          description: "Check the current balance of a reward funding account"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.get-account"
+          with:
+            customerIdentifier: "tools.customerIdentifier"
+            accountIdentifier: "tools.accountIdentifier"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: browse-reward-catalog
+          description: "Browse the full Tango global digital reward catalog with 3,100+ gift cards and incentives"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.get-catalog"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: send-reward
+          description: "Send a digital gift card or reward to a recipient by email. Specify the product UTID, amount, recipient name and email, and sender details."
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "tango-raas.create-order"
+          with:
+            customerIdentifier: "tools.customerIdentifier"
+            accountIdentifier: "tools.accountIdentifier"
+            amount: "tools.amount"
+            utid: "tools.utid"
+            recipient: "tools.recipient"
+            sender: "tools.sender"
+            message: "tools.message"
+            sendEmail: "tools.sendEmail"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-reward-orders
+          description: "List reward orders placed through the account, optionally filtered by date range"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.list-orders"
+          with:
+            startDate: "tools.startDate"
+            endDate: "tools.endDate"
+            elements: "tools.elements"
+            offset: "tools.offset"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-reward-order
+          description: "Get status and fulfillment details for a specific reward order"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.get-order"
+          with:
+            referenceOrderID: "tools.referenceOrderID"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-line-items
+          description: "List all reward line items including fulfillment credentials like gift card codes and redemption URLs"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.list-line-items"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-exchange-rates
+          description: "Get current currency exchange rates for international reward delivery"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.get-exchange-rates"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-reward-countries
+          description: "List all countries where digital rewards can be delivered"
+          hints:
+            readOnly: true
+            idempotent: true
+            openWorld: true
+          call: "tango-raas.list-reward-countries"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.tangocard.com/raas/v2/orders",
+    "headers": {
+      "Authorization": "Basic base64(username:password)",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "customerIdentifier": "acme-corp",
+      "accountIdentifier": "acme-rewards-account",
+      "amount": 25.00,
+      "utid": "U764227",
+      "recipient": {
+        "name": "Jane Smith",
+        "email": "jane.smith@example.com"
+      },
+      "sender": {
+        "name": "ACME Corp Rewards",
+        "email": "rewards@acme.com"
+      },
+      "message": "Thank you for your outstanding performance this quarter!",
+      "sendEmail": true,
+      "externalRefID": "order-ref-2026-001"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "referenceOrderID": "RA2026050300001",
+      "orderRefID": "order-ref-2026-001",
+      "customerIdentifier": "acme-corp",
+      "accountIdentifier": "acme-rewards-account",
+      "amount": 25.00,
+      "currencyCode": "USD",
+      "status": "COMPLETE",
+      "lineItems": [
+        {
+          "referenceLineItemId": "LI20260503000001",
+          "referenceOrderID": "RA2026050300001",
+          "amount": 25.00,
+          "currencyCode": "USD",
+          "utid": "U764227",
+          "rewardName": "Amazon.com Gift Card",
+          "brandCode": "AMAZ",
+          "brandName": "Amazon",
+          "status": "FULFILLED",
+          "createdAt": "2026-05-03T12:00:00Z",
+          "fulfillment": {
+            "fulfillmentType": "URL",
+            "redemptionUrl": "https://www.amazon.com/gc/redeem?claimCode=XXXX-XXXXXX-XXXX"
+          }
+        }
+      ],
+      "createdAt": "2026-05-03T12:00:00Z"
+    }
+  }
+}

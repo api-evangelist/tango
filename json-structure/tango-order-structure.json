@@ -1,0 +1,83 @@
+{
+  "title": "Tango Order Structure",
+  "description": "Structural documentation for Tango reward order objects",
+  "type": "object",
+  "fields": [
+    {
+      "name": "referenceOrderID",
+      "type": "string",
+      "required": true,
+      "description": "Tango-assigned unique order identifier (e.g. RA2026050300001)"
+    },
+    {
+      "name": "orderRefID",
+      "type": "string",
+      "required": false,
+      "description": "Your system's reference ID for idempotency and tracking"
+    },
+    {
+      "name": "customerIdentifier",
+      "type": "string",
+      "required": true,
+      "description": "The customer account that placed the order"
+    },
+    {
+      "name": "accountIdentifier",
+      "type": "string",
+      "required": true,
+      "description": "The funding account debited for this order"
+    },
+    {
+      "name": "amount",
+      "type": "number",
+      "required": true,
+      "description": "Total reward value in account currency (e.g. 25.00)"
+    },
+    {
+      "name": "currencyCode",
+      "type": "string",
+      "required": true,
+      "description": "ISO 4217 currency code (e.g. USD, GBP, EUR)"
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "required": true,
+      "description": "COMPLETE | PENDING | FAILED | CANCELLED"
+    },
+    {
+      "name": "lineItems",
+      "type": "array",
+      "required": false,
+      "description": "Fulfilled reward line items within this order",
+      "items": {
+        "type": "object",
+        "fields": [
+          {"name": "referenceLineItemId", "type": "string", "description": "Unique line item ID"},
+          {"name": "utid", "type": "string", "description": "Universal Token ID of the reward product"},
+          {"name": "rewardName", "type": "string", "description": "Display name of the reward"},
+          {"name": "brandCode", "type": "string", "description": "Brand identifier"},
+          {"name": "amount", "type": "number", "description": "Line item value"},
+          {"name": "status", "type": "string", "description": "PENDING | FULFILLED | CANCELLED | FROZEN"},
+          {
+            "name": "fulfillment",
+            "type": "object",
+            "description": "Reward credential details",
+            "fields": [
+              {"name": "fulfillmentType", "type": "string", "description": "URL | CODE | CODE_PIN | CARD_NUMBER_PIN"},
+              {"name": "redemptionUrl", "type": "string", "description": "URL-based reward redemption link"},
+              {"name": "cardNumber", "type": "string", "description": "Gift card number"},
+              {"name": "cardPin", "type": "string", "description": "Gift card PIN"}
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 creation timestamp"
+    }
+  ]
+}

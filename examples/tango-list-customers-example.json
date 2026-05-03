@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.tangocard.com/raas/v2/customers",
+    "headers": {
+      "Authorization": "Basic base64(username:password)"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "customers": [
+        {
+          "customerIdentifier": "acme-corp",
+          "displayName": "ACME Corporation",
+          "status": "active",
+          "createdAt": "2025-01-15T08:00:00Z",
+          "updatedAt": "2026-01-10T10:30:00Z"
+        },
+        {
+          "customerIdentifier": "globex-co",
+          "displayName": "Globex Company",
+          "status": "active",
+          "createdAt": "2025-03-20T09:00:00Z",
+          "updatedAt": "2025-12-01T14:00:00Z"
+        }
+      ]
+    }
+  }
+}

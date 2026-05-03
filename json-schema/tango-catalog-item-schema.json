@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/tango/blob/main/json-schema/tango-catalog-item-schema.json",
+  "title": "Tango Catalog Item",
+  "description": "Schema for a Tango reward catalog item (brand and associated products)",
+  "type": "object",
+  "properties": {
+    "brandCode": {
+      "type": "string",
+      "description": "Unique brand identifier"
+    },
+    "brandName": {
+      "type": "string",
+      "description": "Brand display name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brand and reward description"
+    },
+    "imageUrls": {
+      "type": "object",
+      "description": "Brand image URLs at various resolutions",
+      "properties": {
+        "200w-326ppi": {"type": "string", "format": "uri"},
+        "200w": {"type": "string", "format": "uri"}
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "Available reward products for this brand",
+      "items": {
+        "type": "object",
+        "properties": {
+          "utid": {
+            "type": "string",
+            "description": "Universal Token ID - unique product identifier"
+          },
+          "rewardName": {
+            "type": "string",
+            "description": "Reward product display name"
+          },
+          "currencyCode": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "valueType": {
+            "type": "string",
+            "enum": ["FIXED_VALUE", "VARIABLE_VALUE"],
+            "description": "Whether this product has a fixed or variable value"
+          },
+          "faceValue": {
+            "type": "number",
+            "description": "Fixed face value (for FIXED_VALUE products)"
+          },
+          "minValue": {
+            "type": "number",
+            "description": "Minimum value (for VARIABLE_VALUE products)"
+          },
+          "maxValue": {
+            "type": "number",
+            "description": "Maximum value (for VARIABLE_VALUE products)"
+          },
+          "countries": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "ISO 3166-1 alpha-2 country codes where this reward is valid"
+          },
+          "credentialTypes": {
+            "type": "array",
+            "items": {"type": "string"},
+            "description": "Delivery credential types available"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive"]
+          }
+        },
+        "required": ["utid", "rewardName", "currencyCode", "valueType"]
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "inactive"]
+    }
+  },
+  "required": ["brandCode", "brandName"]
+}

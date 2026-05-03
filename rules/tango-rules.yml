@@ -1,0 +1,99 @@
+extends: spectral:oas
+rules:
+  tango-operation-ids-camel-case:
+    description: All operationIds must use camelCase
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  tango-paths-kebab-case:
+    description: All path segments must use kebab-case or be a path parameter
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z][a-z0-9-]*|/\\{[a-zA-Z]+\\})+$"
+
+  tango-responses-have-content-type:
+    description: 2xx responses must define a content type
+    severity: warn
+    given: "$.paths[*][*].responses[?(@property >= 200 && @property < 300)]"
+    then:
+      field: content
+      function: truthy
+
+  tango-parameters-have-descriptions:
+    description: All parameters must have descriptions
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  tango-schemas-have-descriptions:
+    description: All schema components must have descriptions
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  tango-auth-required:
+    description: All operations must declare security requirements
+    severity: error
+    given: "$.paths[*][*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [security]
+            - {}
+
+  tango-operations-have-tags:
+    description: All operations must have at least one tag
+    severity: warn
+    given: "$.paths[*][*]"
+    then:
+      field: tags
+      function: truthy
+
+  tango-response-schema-refs:
+    description: Response schemas should use $ref to reusable components
+    severity: hint
+    given: "$.paths[*][*].responses[*].content[*].schema"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: ["$ref"]
+            - properties:
+                type:
+                  enum: [array, object]
+
+  tango-customer-identifier-path-param:
+    description: Customer identifier path parameters must be named customerIdentifier
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in === 'path' && @.name === 'customerId')]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          properties:
+            name:
+              const: customerIdentifier
+
+  tango-delete-returns-204:
+    description: DELETE operations should return 204 No Content
+    severity: warn
+    given: "$.paths[*].delete.responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          required: ["204"]

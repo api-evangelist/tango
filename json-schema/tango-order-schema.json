@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/tango/blob/main/json-schema/tango-order-schema.json",
+  "title": "Tango Order",
+  "description": "Schema for a Tango RaaS API reward order",
+  "type": "object",
+  "properties": {
+    "referenceOrderID": {
+      "type": "string",
+      "description": "Unique order reference identifier assigned by Tango"
+    },
+    "orderRefID": {
+      "type": "string",
+      "description": "Optional external reference ID provided at order creation"
+    },
+    "customerIdentifier": {
+      "type": "string",
+      "description": "Identifier of the customer who placed the order"
+    },
+    "accountIdentifier": {
+      "type": "string",
+      "description": "Identifier of the account used to fund the order"
+    },
+    "amount": {
+      "type": "number",
+      "minimum": 0.01,
+      "description": "Total order amount in the account's currency"
+    },
+    "currencyCode": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 currency code"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["COMPLETE", "PENDING", "FAILED", "CANCELLED"],
+      "description": "Current status of the order"
+    },
+    "lineItems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LineItem"
+      },
+      "description": "Individual reward items within this order"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the order was created"
+    }
+  },
+  "required": ["referenceOrderID", "customerIdentifier", "accountIdentifier", "amount", "currencyCode", "status"],
+  "$defs": {
+    "LineItem": {
+      "type": "object",
+      "properties": {
+        "referenceLineItemId": {
+          "type": "string",
+          "description": "Unique line item identifier"
+        },
+        "referenceOrderID": {
+          "type": "string",
+          "description": "Parent order reference ID"
+        },
+        "amount": {
+          "type": "number",
+          "minimum": 0.01,
+          "description": "Value of this reward item"
+        },
+        "currencyCode": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "utid": {
+          "type": "string",
+          "description": "Universal Token ID of the reward product"
+        },
+        "rewardName": {
+          "type": "string",
+          "description": "Display name of the reward"
+        },
+        "brandCode": {
+          "type": "string",
+          "description": "Brand identifier"
+        },
+        "brandName": {
+          "type": "string",
+          "description": "Brand display name"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["PENDING", "FULFILLED", "CANCELLED", "FROZEN"],
+          "description": "Current status of the line item"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "fulfillment": {
+          "$ref": "#/$defs/Fulfillment"
+        }
+      },
+      "required": ["referenceLineItemId", "amount", "currencyCode", "utid", "status"]
+    },
+    "Fulfillment": {
+      "type": "object",
+      "properties": {
+        "fulfillmentType": {
+          "type": "string",
+          "enum": ["URL", "CODE", "CODE_PIN", "CARD_NUMBER_PIN"],
+          "description": "Type of reward credential provided"
+        },
+        "cardNumber": {
+          "type": "string",
+          "description": "Gift card number (when applicable)"
+        },
+        "cardPin": {
+          "type": "string",
+          "description": "Gift card PIN (when applicable)"
+        },
+        "redemptionUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL for reward redemption"
+        },
+        "credentialList": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {"type": "string"},
+              "value": {"type": "string"}
+            }
+          }
+        }
+      }
+    }
+  }
+}

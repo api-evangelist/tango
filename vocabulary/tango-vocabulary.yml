@@ -1,0 +1,190 @@
+title: Tango Vocabulary
+description: >-
+  Vocabulary and taxonomy for the Tango Rewards-as-a-Service (RaaS) platform,
+  covering digital reward concepts, incentive delivery, catalog management,
+  and account operations.
+tags:
+  - Digital Rewards
+  - Gift Cards
+  - Incentives
+  - Loyalty
+
+terms:
+  - term: RaaS
+    label: Rewards as a Service
+    definition: >-
+      Tango's cloud-based API model enabling companies to automate the delivery
+      of digital rewards and incentives without managing gift card inventory.
+    category: Platform Concept
+
+  - term: UTID
+    label: Universal Token ID
+    definition: >-
+      A unique alphanumeric identifier for a specific reward product in the
+      Tango catalog (e.g., U764227 for an Amazon.com $25 gift card).
+    category: Catalog
+
+  - term: Brand
+    label: Brand
+    definition: >-
+      A merchant or retailer whose gift cards or digital rewards are available
+      in the Tango catalog (e.g., Amazon, Visa, Starbucks).
+    category: Catalog
+
+  - term: Brand Code
+    label: Brand Code
+    definition: >-
+      A short uppercase identifier for a brand in the Tango catalog (e.g., AMAZ for Amazon).
+    category: Catalog
+
+  - term: Fixed Value
+    label: Fixed Value Reward
+    definition: >-
+      A reward product with a pre-set denomination (e.g., a $25 Amazon gift card).
+      Ordered using the exact face value.
+    category: Catalog
+
+  - term: Variable Value
+    label: Variable Value Reward
+    definition: >-
+      A reward product where the sender specifies the amount within the brand's
+      allowed minimum and maximum range.
+    category: Catalog
+
+  - term: Customer
+    label: Customer
+    definition: >-
+      A top-level entity in the Tango platform representing an organization or
+      business that uses the RaaS API. Identified by customerIdentifier.
+    category: Account Management
+
+  - term: Account
+    label: Account
+    definition: >-
+      A sub-account belonging to a Customer that holds a balance in a specific
+      currency used to fund reward orders. Identified by accountIdentifier.
+    category: Account Management
+
+  - term: Balance
+    label: Account Balance
+    definition: >-
+      The current available funds in a Tango account, expressed in the account's
+      currency. Depleted when orders are placed.
+    category: Account Management
+
+  - term: Low Balance Alert
+    label: Low Balance Alert
+    definition: >-
+      A configured threshold that triggers an email notification when an account
+      balance drops below a specified amount.
+    category: Account Management
+
+  - term: Credit Card Deposit
+    label: Credit Card Deposit
+    definition: >-
+      A method of adding funds to a Tango account by processing a credit card
+      charge through the API.
+    category: Funding
+
+  - term: Fund Transfer
+    label: Fund Transfer
+    definition: >-
+      A transfer of funds between two Tango accounts within the same platform.
+    category: Funding
+
+  - term: Order
+    label: Reward Order
+    definition: >-
+      A transaction that delivers one or more digital rewards to a recipient.
+      Identified by referenceOrderID and deducts from the specified account balance.
+    category: Orders
+
+  - term: Line Item
+    label: Order Line Item
+    definition: >-
+      An individual reward within an order. Each line item maps to a single
+      reward product (UTID) and contains fulfillment credentials once delivered.
+    category: Orders
+
+  - term: Fulfillment
+    label: Reward Fulfillment
+    definition: >-
+      The delivery of a reward credential (gift card code, PIN, or redemption URL)
+      to the recipient. Occurs when an order is processed successfully.
+    category: Orders
+
+  - term: Fulfillment Type
+    label: Fulfillment Type
+    definition: >-
+      The format of the reward credential: URL (redemption link), CODE (gift card code),
+      CODE_PIN (code plus PIN), or CARD_NUMBER_PIN (full card details).
+    category: Orders
+
+  - term: Reference Order ID
+    label: Reference Order ID
+    definition: >-
+      A Tango-assigned unique identifier for a reward order (e.g., RA2026050300001).
+    category: Orders
+
+  - term: External Reference ID
+    label: External Reference ID
+    definition: >-
+      An optional identifier from the caller's system used for idempotency and
+      cross-system reconciliation.
+    category: Orders
+
+  - term: Digital Template
+    label: Digital Email Template
+    definition: >-
+      A customizable email template used to deliver rewards to recipients,
+      including subject line, header, message, and branding. Identified by ETID.
+    category: Delivery
+
+  - term: ETID
+    label: Email Template ID
+    definition: >-
+      A unique identifier for a digital email template in the Tango platform.
+    category: Delivery
+
+  - term: Recipient
+    label: Reward Recipient
+    definition: >-
+      The person or entity receiving the digital reward. Defined by name and
+      email address at order time.
+    category: Delivery
+
+  - term: Sender
+    label: Reward Sender
+    definition: >-
+      The organization or person sending the reward. Displayed in the delivery
+      email with name and email address.
+    category: Delivery
+
+  - term: Catalog
+    label: Reward Catalog
+    definition: >-
+      The full collection of available digital rewards accessible to an authenticated
+      Tango customer, including 3,100+ gift cards, prepaid cards, and charitable
+      donations from brands worldwide.
+    category: Catalog
+
+  - term: Choice Product
+    label: Choice Product
+    definition: >-
+      A Tango product where the recipient selects their preferred reward from a
+      curated set of options, rather than receiving a specific brand's gift card.
+    category: Catalog
+
+  - term: Sandbox
+    label: Sandbox Environment
+    definition: >-
+      A testing environment for the Tango API that mirrors production functionality
+      without charging real funds. Base URL: https://integration-api.tangocard.com/raas/v2
+    category: Platform Concept
+
+  - term: Exchange Rate
+    label: Exchange Rate
+    definition: >-
+      The conversion rate between the account currency and a reward's native currency,
+      applied automatically when sending international rewards.
+    category: Reference Data
