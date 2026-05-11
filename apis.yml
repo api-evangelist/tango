@@ -100,6 +100,13 @@ common:
     url: capabilities/reward-automation.yaml
   - type: Vocabulary
     url: vocabulary/tango-vocabulary.yml
+  - type: Integrations
+    url: https://www.tangocard.com/solutions/integrations
+integrations:
+  - name: The Microsoft teams logo.
+  - name: The Marketo company logo.
+  - name: The SurveyMonkey company logo.
+  - name: The Forsta logo.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
