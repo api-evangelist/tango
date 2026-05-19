@@ -1,0 +1,264 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tango RaaS API — Funding
+  description: 'Tango RaaS API — Funding. 6 operations. Lead operation: Create Credit Card Deposit. Self-contained Naftiko
+    capability covering one Tango business surface.'
+  tags:
+  - Tango
+  - Funding
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TANGO_API_KEY: TANGO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: raas-funding
+    baseUri: https://api.tangocard.com/raas/v2
+    description: Tango RaaS API — Funding business capability. Self-contained, no shared references.
+    resources:
+    - name: creditCardDeposits
+      path: /creditCardDeposits
+      operations:
+      - name: createcreditcarddeposit
+        method: POST
+        description: Create Credit Card Deposit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: creditCardDeposits-depositId
+      path: /creditCardDeposits/{depositId}
+      operations:
+      - name: getcreditcarddeposit
+        method: GET
+        description: Get Credit Card Deposit
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: depositId
+          in: path
+          type: string
+          description: The deposit identifier
+          required: true
+    - name: creditCards
+      path: /creditCards
+      operations:
+      - name: listcreditcards
+        method: GET
+        description: List Credit Cards
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registercreditcard
+        method: POST
+        description: Register Credit Card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: creditCards-token
+      path: /creditCards/{token}
+      operations:
+      - name: getcreditcard
+        method: GET
+        description: Get Credit Card
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: token
+          in: path
+          type: string
+          description: The credit card token
+          required: true
+    - name: transferFunds
+      path: /transferFunds
+      operations:
+      - name: listfundtransfers
+        method: GET
+        description: List Fund Transfers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.TANGO_USER}}'
+      password: '{{env.TANGO_PASS}}'
+  exposes:
+  - type: rest
+    namespace: raas-funding-rest
+    port: 8080
+    description: REST adapter for Tango RaaS API — Funding. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/creditcarddeposits
+      name: creditcarddeposits
+      description: REST surface for creditCardDeposits.
+      operations:
+      - method: POST
+        name: createcreditcarddeposit
+        description: Create Credit Card Deposit
+        call: raas-funding.createcreditcarddeposit
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/creditcarddeposits/{depositid}
+      name: creditcarddeposits-depositid
+      description: REST surface for creditCardDeposits-depositId.
+      operations:
+      - method: GET
+        name: getcreditcarddeposit
+        description: Get Credit Card Deposit
+        call: raas-funding.getcreditcarddeposit
+        with:
+          depositId: rest.depositId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/creditcards
+      name: creditcards
+      description: REST surface for creditCards.
+      operations:
+      - method: GET
+        name: listcreditcards
+        description: List Credit Cards
+        call: raas-funding.listcreditcards
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registercreditcard
+        description: Register Credit Card
+        call: raas-funding.registercreditcard
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/creditcards/{token}
+      name: creditcards-token
+      description: REST surface for creditCards-token.
+      operations:
+      - method: GET
+        name: getcreditcard
+        description: Get Credit Card
+        call: raas-funding.getcreditcard
+        with:
+          token: rest.token
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/transferfunds
+      name: transferfunds
+      description: REST surface for transferFunds.
+      operations:
+      - method: GET
+        name: listfundtransfers
+        description: List Fund Transfers
+        call: raas-funding.listfundtransfers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: raas-funding-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tango RaaS API — Funding. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-credit-card-deposit
+      description: Create Credit Card Deposit
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-funding.createcreditcarddeposit
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-credit-card-deposit
+      description: Get Credit Card Deposit
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-funding.getcreditcarddeposit
+      with:
+        depositId: tools.depositId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-credit-cards
+      description: List Credit Cards
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-funding.listcreditcards
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: register-credit-card
+      description: Register Credit Card
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-funding.registercreditcard
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-credit-card
+      description: Get Credit Card
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-funding.getcreditcard
+      with:
+        token: tools.token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-fund-transfers
+      description: List Fund Transfers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-funding.listfundtransfers
+      outputParameters:
+      - type: object
+        mapping: $.

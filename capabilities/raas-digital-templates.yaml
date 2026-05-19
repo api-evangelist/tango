@@ -1,0 +1,198 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tango RaaS API — Digital Templates
+  description: 'Tango RaaS API — Digital Templates. 5 operations. Lead operation: List Digital Templates. Self-contained Naftiko
+    capability covering one Tango business surface.'
+  tags:
+  - Tango
+  - Digital Templates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TANGO_API_KEY: TANGO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: raas-digital-templates
+    baseUri: https://api.tangocard.com/raas/v2
+    description: Tango RaaS API — Digital Templates business capability. Self-contained, no shared references.
+    resources:
+    - name: digitalTemplates
+      path: /digitalTemplates
+      operations:
+      - name: listdigitaltemplates
+        method: GET
+        description: List Digital Templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createdigitaltemplate
+        method: POST
+        description: Create Digital Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: digitalTemplates-etid
+      path: /digitalTemplates/{etid}
+      operations:
+      - name: getdigitaltemplate
+        method: GET
+        description: Get Digital Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatedigitaltemplate
+        method: PATCH
+        description: Update Digital Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletedigitaltemplate
+        method: DELETE
+        description: Delete Digital Template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.TANGO_USER}}'
+      password: '{{env.TANGO_PASS}}'
+  exposes:
+  - type: rest
+    namespace: raas-digital-templates-rest
+    port: 8080
+    description: REST adapter for Tango RaaS API — Digital Templates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/digitaltemplates
+      name: digitaltemplates
+      description: REST surface for digitalTemplates.
+      operations:
+      - method: GET
+        name: listdigitaltemplates
+        description: List Digital Templates
+        call: raas-digital-templates.listdigitaltemplates
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdigitaltemplate
+        description: Create Digital Template
+        call: raas-digital-templates.createdigitaltemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/digitaltemplates/{etid}
+      name: digitaltemplates-etid
+      description: REST surface for digitalTemplates-etid.
+      operations:
+      - method: GET
+        name: getdigitaltemplate
+        description: Get Digital Template
+        call: raas-digital-templates.getdigitaltemplate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatedigitaltemplate
+        description: Update Digital Template
+        call: raas-digital-templates.updatedigitaltemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletedigitaltemplate
+        description: Delete Digital Template
+        call: raas-digital-templates.deletedigitaltemplate
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: raas-digital-templates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tango RaaS API — Digital Templates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-digital-templates
+      description: List Digital Templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-digital-templates.listdigitaltemplates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-digital-template
+      description: Create Digital Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-digital-templates.createdigitaltemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-digital-template
+      description: Get Digital Template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-digital-templates.getdigitaltemplate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-digital-template
+      description: Update Digital Template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: raas-digital-templates.updatedigitaltemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-digital-template
+      description: Delete Digital Template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: raas-digital-templates.deletedigitaltemplate
+      outputParameters:
+      - type: object
+        mapping: $.

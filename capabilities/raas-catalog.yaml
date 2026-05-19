@@ -1,0 +1,177 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tango RaaS API — Catalog
+  description: 'Tango RaaS API — Catalog. 4 operations. Lead operation: List Brand Categories. Self-contained Naftiko capability
+    covering one Tango business surface.'
+  tags:
+  - Tango
+  - Catalog
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TANGO_API_KEY: TANGO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: raas-catalog
+    baseUri: https://api.tangocard.com/raas/v2
+    description: Tango RaaS API — Catalog business capability. Self-contained, no shared references.
+    resources:
+    - name: brandCategories
+      path: /brandCategories
+      operations:
+      - name: listbrandcategories
+        method: GET
+        description: List Brand Categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: catalogs
+      path: /catalogs
+      operations:
+      - name: getcatalog
+        method: GET
+        description: Get Catalog
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: choiceProducts
+      path: /choiceProducts
+      operations:
+      - name: listchoiceproducts
+        method: GET
+        description: List Choice Products
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: choiceProducts-utid
+      path: /choiceProducts/{utid}
+      operations:
+      - name: getchoiceproduct
+        method: GET
+        description: Get Choice Product
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: utid
+          in: path
+          type: string
+          description: The unique product identifier (UTID)
+          required: true
+    authentication:
+      type: basic
+      username: '{{env.TANGO_USER}}'
+      password: '{{env.TANGO_PASS}}'
+  exposes:
+  - type: rest
+    namespace: raas-catalog-rest
+    port: 8080
+    description: REST adapter for Tango RaaS API — Catalog. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/brandcategories
+      name: brandcategories
+      description: REST surface for brandCategories.
+      operations:
+      - method: GET
+        name: listbrandcategories
+        description: List Brand Categories
+        call: raas-catalog.listbrandcategories
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/catalogs
+      name: catalogs
+      description: REST surface for catalogs.
+      operations:
+      - method: GET
+        name: getcatalog
+        description: Get Catalog
+        call: raas-catalog.getcatalog
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/choiceproducts
+      name: choiceproducts
+      description: REST surface for choiceProducts.
+      operations:
+      - method: GET
+        name: listchoiceproducts
+        description: List Choice Products
+        call: raas-catalog.listchoiceproducts
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/choiceproducts/{utid}
+      name: choiceproducts-utid
+      description: REST surface for choiceProducts-utid.
+      operations:
+      - method: GET
+        name: getchoiceproduct
+        description: Get Choice Product
+        call: raas-catalog.getchoiceproduct
+        with:
+          utid: rest.utid
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: raas-catalog-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tango RaaS API — Catalog. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-brand-categories
+      description: List Brand Categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-catalog.listbrandcategories
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-catalog
+      description: Get Catalog
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-catalog.getcatalog
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-choice-products
+      description: List Choice Products
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-catalog.listchoiceproducts
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-choice-product
+      description: Get Choice Product
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-catalog.getchoiceproduct
+      with:
+        utid: tools.utid
+      outputParameters:
+      - type: object
+        mapping: $.

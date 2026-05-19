@@ -1,0 +1,353 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tango RaaS API — Line Items
+  description: 'Tango RaaS API — Line Items. 9 operations. Lead operation: List Line Items. Self-contained Naftiko capability
+    covering one Tango business surface.'
+  tags:
+  - Tango
+  - Line Items
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TANGO_API_KEY: TANGO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: raas-line-items
+    baseUri: https://api.tangocard.com/raas/v2
+    description: Tango RaaS API — Line Items business capability. Self-contained, no shared references.
+    resources:
+    - name: lineItems
+      path: /lineItems
+      operations:
+      - name: listlineitems
+        method: GET
+        description: List Line Items
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: startDate
+          in: query
+          type: string
+        - name: endDate
+          in: query
+          type: string
+        - name: elements
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+    - name: lineItems-reasonCodes
+      path: /lineItems/reasonCodes
+      operations:
+      - name: listlineitemreasoncodes
+        method: GET
+        description: List Line Item Reason Codes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineItems-referenceLineItemId
+      path: /lineItems/{referenceLineItemId}
+      operations:
+      - name: getlineitem
+        method: GET
+        description: Get Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatelineitem
+        method: PATCH
+        description: Update Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: lineItems-referenceLineItemId-cancel
+      path: /lineItems/{referenceLineItemId}/cancel
+      operations:
+      - name: cancellineitem
+        method: POST
+        description: Cancel Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineItems-referenceLineItemId-freeze
+      path: /lineItems/{referenceLineItemId}/freeze
+      operations:
+      - name: freezelineitem
+        method: POST
+        description: Freeze Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineItems-referenceLineItemId-reissue
+      path: /lineItems/{referenceLineItemId}/reissue
+      operations:
+      - name: reissuelineitem
+        method: POST
+        description: Reissue Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineItems-referenceLineItemId-resends
+      path: /lineItems/{referenceLineItemId}/resends
+      operations:
+      - name: resendlineitem
+        method: POST
+        description: Resend Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: lineItems-referenceLineItemId-unfreeze
+      path: /lineItems/{referenceLineItemId}/unfreeze
+      operations:
+      - name: unfreezelineitem
+        method: POST
+        description: Unfreeze Line Item
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.TANGO_USER}}'
+      password: '{{env.TANGO_PASS}}'
+  exposes:
+  - type: rest
+    namespace: raas-line-items-rest
+    port: 8080
+    description: REST adapter for Tango RaaS API — Line Items. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/lineitems
+      name: lineitems
+      description: REST surface for lineItems.
+      operations:
+      - method: GET
+        name: listlineitems
+        description: List Line Items
+        call: raas-line-items.listlineitems
+        with:
+          startDate: rest.startDate
+          endDate: rest.endDate
+          elements: rest.elements
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/reasoncodes
+      name: lineitems-reasoncodes
+      description: REST surface for lineItems-reasonCodes.
+      operations:
+      - method: GET
+        name: listlineitemreasoncodes
+        description: List Line Item Reason Codes
+        call: raas-line-items.listlineitemreasoncodes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}
+      name: lineitems-referencelineitemid
+      description: REST surface for lineItems-referenceLineItemId.
+      operations:
+      - method: GET
+        name: getlineitem
+        description: Get Line Item
+        call: raas-line-items.getlineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatelineitem
+        description: Update Line Item
+        call: raas-line-items.updatelineitem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}/cancel
+      name: lineitems-referencelineitemid-cancel
+      description: REST surface for lineItems-referenceLineItemId-cancel.
+      operations:
+      - method: POST
+        name: cancellineitem
+        description: Cancel Line Item
+        call: raas-line-items.cancellineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}/freeze
+      name: lineitems-referencelineitemid-freeze
+      description: REST surface for lineItems-referenceLineItemId-freeze.
+      operations:
+      - method: POST
+        name: freezelineitem
+        description: Freeze Line Item
+        call: raas-line-items.freezelineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}/reissue
+      name: lineitems-referencelineitemid-reissue
+      description: REST surface for lineItems-referenceLineItemId-reissue.
+      operations:
+      - method: POST
+        name: reissuelineitem
+        description: Reissue Line Item
+        call: raas-line-items.reissuelineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}/resends
+      name: lineitems-referencelineitemid-resends
+      description: REST surface for lineItems-referenceLineItemId-resends.
+      operations:
+      - method: POST
+        name: resendlineitem
+        description: Resend Line Item
+        call: raas-line-items.resendlineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lineitems/{referencelineitemid}/unfreeze
+      name: lineitems-referencelineitemid-unfreeze
+      description: REST surface for lineItems-referenceLineItemId-unfreeze.
+      operations:
+      - method: POST
+        name: unfreezelineitem
+        description: Unfreeze Line Item
+        call: raas-line-items.unfreezelineitem
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: raas-line-items-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tango RaaS API — Line Items. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-line-items
+      description: List Line Items
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-line-items.listlineitems
+      with:
+        startDate: tools.startDate
+        endDate: tools.endDate
+        elements: tools.elements
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-line-item-reason-codes
+      description: List Line Item Reason Codes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-line-items.listlineitemreasoncodes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-line-item
+      description: Get Line Item
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-line-items.getlineitem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-line-item
+      description: Update Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: raas-line-items.updatelineitem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cancel-line-item
+      description: Cancel Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-line-items.cancellineitem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: freeze-line-item
+      description: Freeze Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-line-items.freezelineitem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reissue-line-item
+      description: Reissue Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-line-items.reissuelineitem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resend-line-item
+      description: Resend Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-line-items.resendlineitem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unfreeze-line-item
+      description: Unfreeze Line Item
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: raas-line-items.unfreezelineitem
+      outputParameters:
+      - type: object
+        mapping: $.

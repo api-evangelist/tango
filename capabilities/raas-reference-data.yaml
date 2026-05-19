@@ -1,0 +1,135 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Tango RaaS API — Reference Data
+  description: 'Tango RaaS API — Reference Data. 3 operations. Lead operation: List Credential Types. Self-contained Naftiko
+    capability covering one Tango business surface.'
+  tags:
+  - Tango
+  - Reference Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    TANGO_API_KEY: TANGO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: raas-reference-data
+    baseUri: https://api.tangocard.com/raas/v2
+    description: Tango RaaS API — Reference Data business capability. Self-contained, no shared references.
+    resources:
+    - name: credentialtypes
+      path: /credentialtypes
+      operations:
+      - name: listcredentialtypes
+        method: GET
+        description: List Credential Types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: exchangerates
+      path: /exchangerates
+      operations:
+      - name: getexchangerates
+        method: GET
+        description: Get Exchange Rates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: rewardCountries
+      path: /rewardCountries
+      operations:
+      - name: listrewardcountries
+        method: GET
+        description: List Reward Countries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: basic
+      username: '{{env.TANGO_USER}}'
+      password: '{{env.TANGO_PASS}}'
+  exposes:
+  - type: rest
+    namespace: raas-reference-data-rest
+    port: 8080
+    description: REST adapter for Tango RaaS API — Reference Data. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/credentialtypes
+      name: credentialtypes
+      description: REST surface for credentialtypes.
+      operations:
+      - method: GET
+        name: listcredentialtypes
+        description: List Credential Types
+        call: raas-reference-data.listcredentialtypes
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/exchangerates
+      name: exchangerates
+      description: REST surface for exchangerates.
+      operations:
+      - method: GET
+        name: getexchangerates
+        description: Get Exchange Rates
+        call: raas-reference-data.getexchangerates
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/rewardcountries
+      name: rewardcountries
+      description: REST surface for rewardCountries.
+      operations:
+      - method: GET
+        name: listrewardcountries
+        description: List Reward Countries
+        call: raas-reference-data.listrewardcountries
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: raas-reference-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Tango RaaS API — Reference Data. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-credential-types
+      description: List Credential Types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-reference-data.listcredentialtypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-exchange-rates
+      description: Get Exchange Rates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-reference-data.getexchangerates
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-reward-countries
+      description: List Reward Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: raas-reference-data.listrewardcountries
+      outputParameters:
+      - type: object
+        mapping: $.
