@@ -115,6 +115,8 @@ common:
     url: vocabulary/tango-vocabulary.yml
   - type: Integrations
     url: https://www.tangocard.com/solutions/integrations
+  - type: LLMsTxt
+    url: https://developers.tangocard.com/llms.txt
 integrations:
   - name: The Microsoft teams logo.
   - name: The Marketo company logo.
