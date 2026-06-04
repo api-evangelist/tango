@@ -1,0 +1,124 @@
+arazzo: 1.0.1
+info:
+  title: Tango Branded Order with Email Template
+  summary: Create a digital email template, then place a reward order that delivers using that template.
+  description: >-
+    A branded-delivery pattern. The workflow creates a digital email delivery
+    template for reward notifications, then places a reward order that references
+    the new template id so the reward email is sent with the configured branding,
+    and confirms the order. Every step spells out its request inline so the flow
+    can be read and executed without opening the underlying OpenAPI description.
+    Authentication uses the platform's HTTP Basic credentials declared by the
+    basicAuth security scheme; those credentials are applied at the transport
+    layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: branded-order-with-template
+  summary: Create an email template, place an order using it, then confirm the order.
+  description: >-
+    Creates a digital email template, places a reward order that delivers via
+    that template, and confirms the order.
+  inputs:
+    type: object
+    required:
+    - templateName
+    - customerIdentifier
+    - accountIdentifier
+    - amount
+    - utid
+    - recipientName
+    - recipientEmail
+    - senderName
+    - senderEmail
+    properties:
+      templateName:
+        type: string
+        description: Name for the new digital email template.
+      templateSubject:
+        type: string
+        description: Subject line for the reward notification email.
+        default: "You have received a reward"
+      customerIdentifier:
+        type: string
+        description: Customer that owns the funding account.
+      accountIdentifier:
+        type: string
+        description: Account whose balance funds the reward.
+      amount:
+        type: number
+        description: Value of the reward in the account currency.
+      utid:
+        type: string
+        description: Universal Token ID of the reward product to send.
+      recipientName:
+        type: string
+        description: Name of the reward recipient.
+      recipientEmail:
+        type: string
+        description: Email address of the reward recipient.
+      senderName:
+        type: string
+        description: Name of the reward sender.
+      senderEmail:
+        type: string
+        description: Email address of the reward sender.
+  steps:
+  - stepId: createTemplate
+    description: >-
+      Create a digital email delivery template that will brand the reward
+      notification.
+    operationId: createDigitalTemplate
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.templateName
+        subject: $inputs.templateSubject
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      etid: $response.body#/etid
+  - stepId: placeOrder
+    description: >-
+      Place the reward order, delivering via the freshly created email template.
+    operationId: createOrder
+    requestBody:
+      contentType: application/json
+      payload:
+        customerIdentifier: $inputs.customerIdentifier
+        accountIdentifier: $inputs.accountIdentifier
+        amount: $inputs.amount
+        utid: $inputs.utid
+        recipient:
+          name: $inputs.recipientName
+          email: $inputs.recipientEmail
+        sender:
+          name: $inputs.senderName
+          email: $inputs.senderEmail
+        etid: $steps.createTemplate.outputs.etid
+        sendEmail: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  - stepId: confirmOrder
+    description: >-
+      Read the order back by reference id to confirm it was placed.
+    operationId: getOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $steps.placeOrder.outputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  outputs:
+    etid: $steps.createTemplate.outputs.etid
+    referenceOrderID: $steps.confirmOrder.outputs.referenceOrderID
+    orderStatus: $steps.confirmOrder.outputs.orderStatus

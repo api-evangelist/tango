@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Tango Place Reward Order
+  summary: Select a brand from the catalog, place a reward order for it, and confirm the order.
+  description: >-
+    The core reward-sending pattern. The workflow pulls the full digital reward
+    catalog, places a reward order against a funding account for a chosen product
+    UTID delivered to a recipient, and then reads the order back by its reference
+    id to confirm fulfillment. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description. Authentication uses the platform's HTTP Basic credentials
+    declared by the basicAuth security scheme; those credentials are applied at
+    the transport layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: place-reward-order
+  summary: Read the catalog, place a reward order, and confirm it.
+  description: >-
+    Fetches the reward catalog for reference, places an order for the supplied
+    product UTID against a funding account, and confirms the resulting order.
+  inputs:
+    type: object
+    required:
+    - customerIdentifier
+    - accountIdentifier
+    - amount
+    - utid
+    - recipientName
+    - recipientEmail
+    - senderName
+    - senderEmail
+    properties:
+      customerIdentifier:
+        type: string
+        description: Customer that owns the funding account.
+      accountIdentifier:
+        type: string
+        description: Account whose balance funds the reward.
+      amount:
+        type: number
+        description: Value of the reward in the account currency.
+      utid:
+        type: string
+        description: Universal Token ID of the reward product to send.
+      recipientName:
+        type: string
+        description: Name of the reward recipient.
+      recipientEmail:
+        type: string
+        description: Email address of the reward recipient.
+      senderName:
+        type: string
+        description: Name of the reward sender.
+      senderEmail:
+        type: string
+        description: Email address of the reward sender.
+      message:
+        type: string
+        description: Optional custom message to include with the reward.
+        default: ""
+  steps:
+  - stepId: readCatalog
+    description: >-
+      Retrieve the full digital reward catalog so the chosen product UTID can be
+      validated against available brands.
+    operationId: getCatalog
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      brands: $response.body#/brands
+  - stepId: placeOrder
+    description: >-
+      Place a reward order for the chosen product, deducting its value from the
+      funding account and delivering the reward to the recipient.
+    operationId: createOrder
+    requestBody:
+      contentType: application/json
+      payload:
+        customerIdentifier: $inputs.customerIdentifier
+        accountIdentifier: $inputs.accountIdentifier
+        amount: $inputs.amount
+        utid: $inputs.utid
+        recipient:
+          name: $inputs.recipientName
+          email: $inputs.recipientEmail
+        sender:
+          name: $inputs.senderName
+          email: $inputs.senderEmail
+        message: $inputs.message
+        sendEmail: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  - stepId: confirmOrder
+    description: >-
+      Read the order back by reference id to confirm its status and capture the
+      resulting line items.
+    operationId: getOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $steps.placeOrder.outputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+      lineItems: $response.body#/lineItems
+  outputs:
+    referenceOrderID: $steps.confirmOrder.outputs.referenceOrderID
+    orderStatus: $steps.confirmOrder.outputs.orderStatus
+    lineItems: $steps.confirmOrder.outputs.lineItems

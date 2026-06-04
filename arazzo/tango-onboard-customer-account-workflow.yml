@@ -1,0 +1,104 @@
+arazzo: 1.0.1
+info:
+  title: Tango Onboard Customer and Account
+  summary: Create a customer, provision a funding account under it, and confirm the account balance.
+  description: >-
+    The standard Tango RaaS onboarding pattern. The workflow creates a new
+    customer in the platform, provisions a sub-account under that customer to
+    hold a reward funding balance, and then reads the account back to confirm it
+    was created and to capture its starting balance. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description. Authentication uses the platform's HTTP Basic
+    credentials declared by the basicAuth security scheme; those credentials are
+    applied at the transport layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: onboard-customer-account
+  summary: Create a customer, create a funding account under it, then confirm the account.
+  description: >-
+    Provisions a brand-new customer and a sub-account in a single pass, then
+    fetches the account to verify creation and report its starting balance.
+  inputs:
+    type: object
+    required:
+    - customerIdentifier
+    - customerDisplayName
+    - accountIdentifier
+    - accountDisplayName
+    properties:
+      customerIdentifier:
+        type: string
+        description: Unique identifier to assign to the new customer.
+      customerDisplayName:
+        type: string
+        description: Display name for the new customer.
+      accountIdentifier:
+        type: string
+        description: Unique identifier to assign to the new account.
+      accountDisplayName:
+        type: string
+        description: Display name for the new account.
+      currencyCode:
+        type: string
+        description: ISO 4217 currency code for the account (defaults to USD).
+        default: USD
+  steps:
+  - stepId: createCustomer
+    description: >-
+      Create the customer record that will own the funding account.
+    operationId: createCustomer
+    requestBody:
+      contentType: application/json
+      payload:
+        customerIdentifier: $inputs.customerIdentifier
+        displayName: $inputs.customerDisplayName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      customerIdentifier: $response.body#/customerIdentifier
+      customerStatus: $response.body#/status
+  - stepId: createAccount
+    description: >-
+      Provision a sub-account under the newly created customer to hold the
+      reward funding balance.
+    operationId: createAccount
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $steps.createCustomer.outputs.customerIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        accountIdentifier: $inputs.accountIdentifier
+        displayName: $inputs.accountDisplayName
+        currencyCode: $inputs.currencyCode
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      accountIdentifier: $response.body#/accountIdentifier
+  - stepId: confirmAccount
+    description: >-
+      Read the account back to confirm it exists and capture its starting
+      balance.
+    operationId: getAccount
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $steps.createCustomer.outputs.customerIdentifier
+    - name: accountIdentifier
+      in: path
+      value: $steps.createAccount.outputs.accountIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accountIdentifier: $response.body#/accountIdentifier
+      currentBalance: $response.body#/currentBalance
+      accountStatus: $response.body#/status
+  outputs:
+    customerIdentifier: $steps.createCustomer.outputs.customerIdentifier
+    accountIdentifier: $steps.confirmAccount.outputs.accountIdentifier
+    currentBalance: $steps.confirmAccount.outputs.currentBalance

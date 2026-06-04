@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Tango Fund Account by Credit Card
+  summary: Register a credit card, deposit funds onto an account with it, and confirm the deposit settled.
+  description: >-
+    The end-to-end account funding pattern. The workflow registers a credit card
+    to obtain a reusable token, submits a credit card deposit against the target
+    account using that token, and then polls the deposit by id to confirm its
+    status. Every step spells out its request inline so the flow can be read and
+    executed without opening the underlying OpenAPI description. Authentication
+    uses the platform's HTTP Basic credentials declared by the basicAuth security
+    scheme; those credentials are applied at the transport layer and are not
+    request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: fund-account-credit-card
+  summary: Register a card, deposit funds onto an account, and confirm the deposit.
+  description: >-
+    Registers a credit card to get a token, deposits funds onto the specified
+    account using that token, and reads the deposit back to confirm its status.
+  inputs:
+    type: object
+    required:
+    - cardNumber
+    - expirationDate
+    - cvv
+    - billingAddress
+    - customerIdentifier
+    - accountIdentifier
+    - amount
+    properties:
+      cardNumber:
+        type: string
+        description: The credit card number to register.
+      expirationDate:
+        type: string
+        description: Card expiration date (MM/YY).
+      cvv:
+        type: string
+        description: Card verification value.
+      billingAddress:
+        type: object
+        description: Billing address for the card.
+      customerIdentifier:
+        type: string
+        description: Customer that owns the account being funded.
+      accountIdentifier:
+        type: string
+        description: Account to deposit funds onto.
+      amount:
+        type: number
+        description: Amount to deposit in the account currency.
+  steps:
+  - stepId: registerCard
+    description: >-
+      Register the credit card to obtain a reusable funding token.
+    operationId: registerCreditCard
+    requestBody:
+      contentType: application/json
+      payload:
+        cardNumber: $inputs.cardNumber
+        expirationDate: $inputs.expirationDate
+        cvv: $inputs.cvv
+        billingAddress: $inputs.billingAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      token: $response.body#/token
+      lastFour: $response.body#/lastFour
+  - stepId: createDeposit
+    description: >-
+      Submit a credit card deposit against the target account using the
+      registered card token.
+    operationId: createCreditCardDeposit
+    requestBody:
+      contentType: application/json
+      payload:
+        customerIdentifier: $inputs.customerIdentifier
+        accountIdentifier: $inputs.accountIdentifier
+        amount: $inputs.amount
+        creditCardToken: $steps.registerCard.outputs.token
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      depositId: $response.body#/depositId
+      depositStatus: $response.body#/status
+  - stepId: confirmDeposit
+    description: >-
+      Read the deposit back by id to confirm its settlement status.
+    operationId: getCreditCardDeposit
+    parameters:
+    - name: depositId
+      in: path
+      value: $steps.createDeposit.outputs.depositId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      depositId: $response.body#/depositId
+      amount: $response.body#/amount
+      depositStatus: $response.body#/status
+  outputs:
+    cardToken: $steps.registerCard.outputs.token
+    depositId: $steps.confirmDeposit.outputs.depositId
+    depositStatus: $steps.confirmDeposit.outputs.depositStatus

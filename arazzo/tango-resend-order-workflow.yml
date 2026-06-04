@@ -1,0 +1,74 @@
+arazzo: 1.0.1
+info:
+  title: Tango Resend Order
+  summary: Look up an order, resend it to the recipient, and confirm the resend.
+  description: >-
+    A recipient-recovery pattern for when a reward email is lost. The workflow
+    reads the order by reference id to confirm it exists and is fulfilled,
+    triggers a resend to the original recipient, and reads the order back to
+    confirm its status after the resend. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description. Authentication uses the platform's HTTP Basic credentials
+    declared by the basicAuth security scheme; those credentials are applied at
+    the transport layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: resend-order
+  summary: Confirm an order exists, resend it, and confirm the resend.
+  description: >-
+    Fetches the order, resends it to the recipient, and re-reads the order to
+    confirm its post-resend status.
+  inputs:
+    type: object
+    required:
+    - referenceOrderID
+    properties:
+      referenceOrderID:
+        type: string
+        description: Reference id of the order to resend.
+  steps:
+  - stepId: getOrder
+    description: >-
+      Read the order by reference id to confirm it exists before resending.
+    operationId: getOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $inputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  - stepId: resendOrder
+    description: >-
+      Resend the fulfilled order to the original recipient.
+    operationId: resendOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $steps.getOrder.outputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  - stepId: confirmResend
+    description: >-
+      Read the order back to confirm its status after the resend.
+    operationId: getOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $steps.resendOrder.outputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      orderStatus: $response.body#/status
+  outputs:
+    referenceOrderID: $steps.resendOrder.outputs.referenceOrderID
+    orderStatus: $steps.confirmResend.outputs.orderStatus

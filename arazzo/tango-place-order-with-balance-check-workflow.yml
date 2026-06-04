@@ -1,0 +1,132 @@
+arazzo: 1.0.1
+info:
+  title: Tango Place Order with Balance Check
+  summary: Check an account balance, then branch to place a reward order only when funds are sufficient.
+  description: >-
+    A guarded reward-sending pattern. The workflow reads the funding account to
+    learn its current balance, then branches: when the balance covers the reward
+    amount it places the order and confirms it, and when the balance is too low
+    it stops without placing an order. Every step spells out its request inline
+    so the flow can be read and executed without opening the underlying OpenAPI
+    description. Authentication uses the platform's HTTP Basic credentials
+    declared by the basicAuth security scheme; those credentials are applied at
+    the transport layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: place-order-with-balance-check
+  summary: Verify the account balance covers the reward, then place and confirm the order.
+  description: >-
+    Reads the account balance and only places the reward order when there are
+    sufficient funds, confirming the order afterward.
+  inputs:
+    type: object
+    required:
+    - customerIdentifier
+    - accountIdentifier
+    - amount
+    - utid
+    - recipientName
+    - recipientEmail
+    - senderName
+    - senderEmail
+    properties:
+      customerIdentifier:
+        type: string
+        description: Customer that owns the funding account.
+      accountIdentifier:
+        type: string
+        description: Account whose balance funds the reward.
+      amount:
+        type: number
+        description: Value of the reward in the account currency.
+      utid:
+        type: string
+        description: Universal Token ID of the reward product to send.
+      recipientName:
+        type: string
+        description: Name of the reward recipient.
+      recipientEmail:
+        type: string
+        description: Email address of the reward recipient.
+      senderName:
+        type: string
+        description: Name of the reward sender.
+      senderEmail:
+        type: string
+        description: Email address of the reward sender.
+  steps:
+  - stepId: checkBalance
+    description: >-
+      Read the funding account to capture its current balance before deciding
+      whether to place the order.
+    operationId: getAccount
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $inputs.customerIdentifier
+    - name: accountIdentifier
+      in: path
+      value: $inputs.accountIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentBalance: $response.body#/currentBalance
+    onSuccess:
+    - name: fundsAvailable
+      type: goto
+      stepId: placeOrder
+      criteria:
+      - context: $response.body
+        condition: $.currentBalance >= $inputs.amount
+        type: jsonpath
+    - name: insufficientFunds
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.currentBalance < $inputs.amount
+        type: jsonpath
+  - stepId: placeOrder
+    description: >-
+      Place the reward order now that the account balance has been confirmed to
+      cover the reward amount.
+    operationId: createOrder
+    requestBody:
+      contentType: application/json
+      payload:
+        customerIdentifier: $inputs.customerIdentifier
+        accountIdentifier: $inputs.accountIdentifier
+        amount: $inputs.amount
+        utid: $inputs.utid
+        recipient:
+          name: $inputs.recipientName
+          email: $inputs.recipientEmail
+        sender:
+          name: $inputs.senderName
+          email: $inputs.senderEmail
+        sendEmail: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  - stepId: confirmOrder
+    description: >-
+      Read the order back by reference id to confirm its status.
+    operationId: getOrder
+    parameters:
+    - name: referenceOrderID
+      in: path
+      value: $steps.placeOrder.outputs.referenceOrderID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      referenceOrderID: $response.body#/referenceOrderID
+      orderStatus: $response.body#/status
+  outputs:
+    currentBalance: $steps.checkBalance.outputs.currentBalance
+    referenceOrderID: $steps.confirmOrder.outputs.referenceOrderID
+    orderStatus: $steps.confirmOrder.outputs.orderStatus

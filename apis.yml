@@ -73,6 +73,39 @@ apis:
     - type: Email
       url: mailto:devsupport@tangocard.com
 common:
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+    - url: arazzo/tango-branded-order-with-template-workflow.yml
+      name: Tango Branded Order with Email Template
+      summary: Create a digital email template, then place a reward order that delivers using that template.
+    - url: arazzo/tango-explore-catalog-choice-product-workflow.yml
+      name: Tango Explore Catalog and Choice Product
+      summary: Browse brand categories, list Tango Choice products, and fetch one Choice product's detail.
+    - url: arazzo/tango-freeze-and-cancel-line-item-workflow.yml
+      name: Tango Freeze and Cancel a Line Item
+      summary: Freeze a line item to suspend delivery, then cancel it and confirm the cancellation.
+    - url: arazzo/tango-fund-account-credit-card-workflow.yml
+      name: Tango Fund Account by Credit Card
+      summary: Register a credit card, deposit funds onto an account with it, and confirm the deposit settled.
+    - url: arazzo/tango-low-balance-alert-workflow.yml
+      name: Tango Configure Low Balance Alert
+      summary: Confirm an account exists, set a low balance alert on it, and verify the alert.
+    - url: arazzo/tango-onboard-customer-account-workflow.yml
+      name: Tango Onboard Customer and Account
+      summary: Create a customer, provision a funding account under it, and confirm the account balance.
+    - url: arazzo/tango-place-order-with-balance-check-workflow.yml
+      name: Tango Place Order with Balance Check
+      summary: Check an account balance, then branch to place a reward order only when funds are sufficient.
+    - url: arazzo/tango-place-reward-order-workflow.yml
+      name: Tango Place Reward Order
+      summary: Select a brand from the catalog, place a reward order for it, and confirm the order.
+    - url: arazzo/tango-resend-order-workflow.yml
+      name: Tango Resend Order
+      summary: Look up an order, resend it to the recipient, and confirm the resend.
+    - url: arazzo/tango-resolve-line-item-workflow.yml
+      name: Tango Resolve a Failed Line Item
+      summary: "Inspect a line item and branch \u2014 resend it when fulfilled, otherwise reissue it."
   - type: LinkedIn
     url: https://www.linkedin.com/company/tango-io
   - type: Website

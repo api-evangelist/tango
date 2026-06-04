@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Tango Configure Low Balance Alert
+  summary: Confirm an account exists, set a low balance alert on it, and verify the alert.
+  description: >-
+    A proactive funding-monitoring pattern. The workflow reads the account to
+    confirm it exists and capture its current balance, creates a low balance
+    alert that emails a contact when the balance drops below a threshold, and
+    reads the alert back to verify it was registered. Every step spells out its
+    request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description. Authentication uses the platform's HTTP Basic
+    credentials declared by the basicAuth security scheme; those credentials are
+    applied at the transport layer and are not request parameters.
+  version: 1.0.0
+sourceDescriptions:
+- name: tangoRaasApi
+  url: ../openapi/tango-raas-api-openapi.yml
+  type: openapi
+workflows:
+- workflowId: configure-low-balance-alert
+  summary: Confirm the account, create a low balance alert, and verify it.
+  description: >-
+    Reads the account to confirm it exists, sets a low balance alert threshold
+    with a notification email, and reads the alert back to verify it.
+  inputs:
+    type: object
+    required:
+    - customerIdentifier
+    - accountIdentifier
+    - threshold
+    - emailAddress
+    properties:
+      customerIdentifier:
+        type: string
+        description: Customer that owns the account.
+      accountIdentifier:
+        type: string
+        description: Account to monitor for low balance.
+      threshold:
+        type: number
+        description: Alert when the balance drops below this amount.
+      emailAddress:
+        type: string
+        description: Email address to notify when the threshold is crossed.
+  steps:
+  - stepId: confirmAccount
+    description: >-
+      Read the account to confirm it exists and capture its current balance
+      before configuring an alert.
+    operationId: getAccount
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $inputs.customerIdentifier
+    - name: accountIdentifier
+      in: path
+      value: $inputs.accountIdentifier
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      accountIdentifier: $response.body#/accountIdentifier
+      currentBalance: $response.body#/currentBalance
+  - stepId: createAlert
+    description: >-
+      Create a low balance alert that notifies the supplied email when the
+      account balance falls below the threshold.
+    operationId: createLowBalanceAlert
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $inputs.customerIdentifier
+    - name: accountIdentifier
+      in: path
+      value: $steps.confirmAccount.outputs.accountIdentifier
+    requestBody:
+      contentType: application/json
+      payload:
+        threshold: $inputs.threshold
+        emailAddress: $inputs.emailAddress
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      balanceAlertID: $response.body#/balanceAlertID
+  - stepId: verifyAlert
+    description: >-
+      Read the alert back by id to verify it was registered with the expected
+      threshold.
+    operationId: getLowBalanceAlert
+    parameters:
+    - name: customerIdentifier
+      in: path
+      value: $inputs.customerIdentifier
+    - name: accountIdentifier
+      in: path
+      value: $steps.confirmAccount.outputs.accountIdentifier
+    - name: balanceAlertID
+      in: path
+      value: $steps.createAlert.outputs.balanceAlertID
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      balanceAlertID: $response.body#/balanceAlertID
+      threshold: $response.body#/threshold
+      alertStatus: $response.body#/status
+  outputs:
+    balanceAlertID: $steps.verifyAlert.outputs.balanceAlertID
+    threshold: $steps.verifyAlert.outputs.threshold
+    currentBalance: $steps.confirmAccount.outputs.currentBalance
