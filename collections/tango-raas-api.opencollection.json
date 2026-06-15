@@ -1,0 +1,925 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers"
+          },
+          "docs": "Retrieve a list of all customers in the platform."
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new customer account in the platform."
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific customer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/accounts"
+          },
+          "docs": "Retrieve a list of all accounts across all customers."
+        },
+        {
+          "info": {
+            "name": "List Customer Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ]
+          },
+          "docs": "Retrieve all accounts for a specific customer."
+        },
+        {
+          "info": {
+            "name": "Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new account for a specific customer."
+        },
+        {
+          "info": {
+            "name": "Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific account including current balance."
+        },
+        {
+          "info": {
+            "name": "Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify settings for an existing account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Low Balance Alerts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Low Balance Alerts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier/lowbalance",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ]
+          },
+          "docs": "List all low balance alerts for a specific account."
+        },
+        {
+          "info": {
+            "name": "Create Low Balance Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier/lowbalance",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set a low balance alert threshold for an account."
+        },
+        {
+          "info": {
+            "name": "Get Low Balance Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier/lowbalance/:balanceAlertID",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              },
+              {
+                "name": "balanceAlertID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the low balance alert"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific low balance alert."
+        },
+        {
+          "info": {
+            "name": "Update Low Balance Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier/lowbalance/:balanceAlertID",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              },
+              {
+                "name": "balanceAlertID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the low balance alert"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing low balance alert threshold."
+        },
+        {
+          "info": {
+            "name": "Delete Low Balance Alert",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier/lowbalance/:balanceAlertID",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              },
+              {
+                "name": "balanceAlertID",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the low balance alert"
+              }
+            ]
+          },
+          "docs": "Remove a low balance alert from an account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Funding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Credit Card Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/creditCardDeposits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fund an account by processing a credit card deposit."
+        },
+        {
+          "info": {
+            "name": "Get Credit Card Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCardDeposits/:depositId",
+            "params": [
+              {
+                "name": "depositId",
+                "value": "",
+                "type": "path",
+                "description": "The deposit identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific credit card deposit."
+        },
+        {
+          "info": {
+            "name": "List Credit Cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCards"
+          },
+          "docs": "List all registered credit cards on the account."
+        },
+        {
+          "info": {
+            "name": "Register Credit Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/creditCards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new credit card for funding."
+        },
+        {
+          "info": {
+            "name": "Get Credit Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCards/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The credit card token"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific registered credit card."
+        },
+        {
+          "info": {
+            "name": "List Fund Transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/transferFunds"
+          },
+          "docs": "List fund transfer history for the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/catalogs"
+          },
+          "docs": "Retrieve the full digital reward catalog including all available brands and products accessible to the authenticated customer."
+        },
+        {
+          "info": {
+            "name": "List Brand Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/brandCategories"
+          },
+          "docs": "Retrieve all available brand categories for catalog filtering."
+        },
+        {
+          "info": {
+            "name": "List Choice Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/choiceProducts"
+          },
+          "docs": "List all available Tango Choice products."
+        },
+        {
+          "info": {
+            "name": "Get Choice Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/choiceProducts/:utid",
+            "params": [
+              {
+                "name": "utid",
+                "value": "",
+                "type": "path",
+                "description": "The unique product identifier (UTID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific Choice product."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/orders",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders from this date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders up to this date"
+              },
+              {
+                "name": "elements",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of orders placed by the account."
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Place a new reward order. This deducts the reward value from the specified account balance and delivers the digital reward to the recipient."
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/orders/:referenceOrderID",
+            "params": [
+              {
+                "name": "referenceOrderID",
+                "value": "",
+                "type": "path",
+                "description": "The reference order ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order by reference ID."
+        },
+        {
+          "info": {
+            "name": "Resend Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/orders/:referenceOrderID/resends",
+            "params": [
+              {
+                "name": "referenceOrderID",
+                "value": "",
+                "type": "path",
+                "description": "The reference order ID"
+              }
+            ]
+          },
+          "docs": "Resend a fulfilled order to the recipient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Line Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Line Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "elements",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all order line items."
+        },
+        {
+          "info": {
+            "name": "List Line Item Reason Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/reasonCodes"
+          },
+          "docs": "Retrieve available reason codes for line item status changes."
+        },
+        {
+          "info": {
+            "name": "Get Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order line item."
+        },
+        {
+          "info": {
+            "name": "Update Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata or status on a line item."
+        },
+        {
+          "info": {
+            "name": "Cancel Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/cancel",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Cancel a pending line item before fulfillment."
+        },
+        {
+          "info": {
+            "name": "Freeze Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/freeze",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Freeze a line item to temporarily suspend delivery."
+        },
+        {
+          "info": {
+            "name": "Unfreeze Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/unfreeze",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Unfreeze a previously frozen line item to resume delivery."
+        },
+        {
+          "info": {
+            "name": "Reissue Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/reissue",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Reissue a failed or expired line item."
+        },
+        {
+          "info": {
+            "name": "Resend Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/resends",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Resend a fulfilled line item to the recipient."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Digital Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Digital Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates"
+          },
+          "docs": "List all configured digital email delivery templates."
+        },
+        {
+          "info": {
+            "name": "Create Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email delivery template for reward notifications."
+        },
+        {
+          "info": {
+            "name": "Get Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific digital email template by ID."
+        },
+        {
+          "info": {
+            "name": "Update Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing digital email template."
+        },
+        {
+          "info": {
+            "name": "Delete Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ]
+          },
+          "docs": "Delete a digital email template."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Exchange Rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/exchangerates"
+          },
+          "docs": "Retrieve current exchange rates for all supported currencies."
+        },
+        {
+          "info": {
+            "name": "List Reward Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/rewardCountries"
+          },
+          "docs": "List all countries where digital rewards can be delivered."
+        },
+        {
+          "info": {
+            "name": "List Credential Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/credentialtypes"
+          },
+          "docs": "Retrieve available credential types for reward delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

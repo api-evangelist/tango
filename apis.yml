@@ -1,9 +1,10 @@
 aid: tango
 name: Tango
-description: Tango (formerly Tango Card) is a rewards-as-a-service platform that provides APIs for automating digital reward
-  and incentive delivery. The Tango RaaS API enables companies to integrate a global catalog of 3,100+ digital gift cards,
-  prepaid cards, and charitable donations directly into their products and workflows. Tango serves loyalty programs, research
-  panels, employee recognition platforms, and consumer incentive applications worldwide.
+description: >-
+  Tango (formerly Tango Card) is a rewards-as-a-service platform that provides APIs for automating digital reward and
+  incentive delivery. The Tango RaaS API enables companies to integrate a global catalog of 3,100+ digital gift cards,
+  prepaid cards, and charitable donations directly into their products and workflows. Tango serves loyalty programs,
+  research panels, employee recognition platforms, and consumer incentive applications worldwide.
 type: Index
 image: https://www.tangocard.com/wp-content/uploads/2021/06/tango-logo.png
 tags:
@@ -20,92 +21,78 @@ specificationVersion: '0.19'
 apis:
   - aid: tango:raas-api
     name: Tango RaaS API
-    description: The Tango Rewards-as-a-Service (RaaS) API v2 is a RESTful interface for automating digital reward and incentive
-      delivery. It enables customers to manage accounts and funding, browse a global reward catalog, place and manage orders,
-      configure digital email templates, and receive webhook notifications. The API supports both sandbox and production environments.
+    description: >-
+      The Tango Rewards-as-a-Service (RaaS) API v2 is a RESTful interface for automating digital reward and incentive
+      delivery. It enables customers to manage accounts and funding, browse a global reward catalog, place and manage
+      orders, configure digital email templates, and receive webhook notifications. The API supports both sandbox and
+      production environments.
     humanURL: https://developers.tangocard.com/
     baseURL: https://api.tangocard.com/raas/v2
     tags:
-    - Accounts
-    - Catalog
-    - Gift Cards
-    - Orders
-    - Rewards
-    - Webhooks
+      - Accounts
+      - Catalog
+      - Gift Cards
+      - Orders
+      - Rewards
+      - Webhooks
     properties:
-    - type: Documentation
-      url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
-    - type: Reference
-      url: https://developers.tangocard.com/reference
-    - type: OpenAPI
-      url: openapi/tango-raas-api-openapi.yml
-    - type: GettingStarted
-      url: https://developers.tangocard.com/docs/getting-started
-    - type: Authentication
-      url: https://developers.tangocard.com/docs/authentication
-    - type: Sandbox
-      url: https://portal.sandbox.tangocard.com
-    - type: Portal
-      url: https://portal.tangocard.com
-    - type: ChangeLog
-      url: https://developers.tangocard.com/changelog
-    - type: NaftikoCapability
-      url: capabilities/raas-accounts.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-catalog.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-customers.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-digital-templates.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-funding.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-line-items.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-low-balance-alerts.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-orders.yaml
-    - type: NaftikoCapability
-      url: capabilities/raas-reference-data.yaml
+      - type: Documentation
+        url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+      - type: Reference
+        url: https://developers.tangocard.com/reference
+      - type: OpenAPI
+        url: openapi/tango-raas-api-openapi.yml
+      - type: GettingStarted
+        url: https://developers.tangocard.com/docs/getting-started
+      - type: Authentication
+        url: https://developers.tangocard.com/docs/authentication
+      - type: Sandbox
+        url: https://portal.sandbox.tangocard.com
+      - type: Portal
+        url: https://portal.tangocard.com
+      - type: ChangeLog
+        url: https://developers.tangocard.com/changelog
     contact:
-    - type: Support
-      url: https://developers.tangocard.com/
-    - type: Email
-      url: mailto:devsupport@tangocard.com
+      - type: Support
+        url: https://developers.tangocard.com/
+      - type: Email
+        url: mailto:devsupport@tangocard.com
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/tango/overview
   - type: ArazzoWorkflows
     url: arazzo/
     workflows:
-    - url: arazzo/tango-branded-order-with-template-workflow.yml
-      name: Tango Branded Order with Email Template
-      summary: Create a digital email template, then place a reward order that delivers using that template.
-    - url: arazzo/tango-explore-catalog-choice-product-workflow.yml
-      name: Tango Explore Catalog and Choice Product
-      summary: Browse brand categories, list Tango Choice products, and fetch one Choice product's detail.
-    - url: arazzo/tango-freeze-and-cancel-line-item-workflow.yml
-      name: Tango Freeze and Cancel a Line Item
-      summary: Freeze a line item to suspend delivery, then cancel it and confirm the cancellation.
-    - url: arazzo/tango-fund-account-credit-card-workflow.yml
-      name: Tango Fund Account by Credit Card
-      summary: Register a credit card, deposit funds onto an account with it, and confirm the deposit settled.
-    - url: arazzo/tango-low-balance-alert-workflow.yml
-      name: Tango Configure Low Balance Alert
-      summary: Confirm an account exists, set a low balance alert on it, and verify the alert.
-    - url: arazzo/tango-onboard-customer-account-workflow.yml
-      name: Tango Onboard Customer and Account
-      summary: Create a customer, provision a funding account under it, and confirm the account balance.
-    - url: arazzo/tango-place-order-with-balance-check-workflow.yml
-      name: Tango Place Order with Balance Check
-      summary: Check an account balance, then branch to place a reward order only when funds are sufficient.
-    - url: arazzo/tango-place-reward-order-workflow.yml
-      name: Tango Place Reward Order
-      summary: Select a brand from the catalog, place a reward order for it, and confirm the order.
-    - url: arazzo/tango-resend-order-workflow.yml
-      name: Tango Resend Order
-      summary: Look up an order, resend it to the recipient, and confirm the resend.
-    - url: arazzo/tango-resolve-line-item-workflow.yml
-      name: Tango Resolve a Failed Line Item
-      summary: "Inspect a line item and branch \u2014 resend it when fulfilled, otherwise reissue it."
+      - url: arazzo/tango-branded-order-with-template-workflow.yml
+        name: Tango Branded Order with Email Template
+        summary: Create a digital email template, then place a reward order that delivers using that template.
+      - url: arazzo/tango-explore-catalog-choice-product-workflow.yml
+        name: Tango Explore Catalog and Choice Product
+        summary: Browse brand categories, list Tango Choice products, and fetch one Choice product's detail.
+      - url: arazzo/tango-freeze-and-cancel-line-item-workflow.yml
+        name: Tango Freeze and Cancel a Line Item
+        summary: Freeze a line item to suspend delivery, then cancel it and confirm the cancellation.
+      - url: arazzo/tango-fund-account-credit-card-workflow.yml
+        name: Tango Fund Account by Credit Card
+        summary: Register a credit card, deposit funds onto an account with it, and confirm the deposit settled.
+      - url: arazzo/tango-low-balance-alert-workflow.yml
+        name: Tango Configure Low Balance Alert
+        summary: Confirm an account exists, set a low balance alert on it, and verify the alert.
+      - url: arazzo/tango-onboard-customer-account-workflow.yml
+        name: Tango Onboard Customer and Account
+        summary: Create a customer, provision a funding account under it, and confirm the account balance.
+      - url: arazzo/tango-place-order-with-balance-check-workflow.yml
+        name: Tango Place Order with Balance Check
+        summary: Check an account balance, then branch to place a reward order only when funds are sufficient.
+      - url: arazzo/tango-place-reward-order-workflow.yml
+        name: Tango Place Reward Order
+        summary: Select a brand from the catalog, place a reward order for it, and confirm the order.
+      - url: arazzo/tango-resend-order-workflow.yml
+        name: Tango Resend Order
+        summary: Look up an order, resend it to the recipient, and confirm the resend.
+      - url: arazzo/tango-resolve-line-item-workflow.yml
+        name: Tango Resolve a Failed Line Item
+        summary: Inspect a line item and branch — resend it when fulfilled, otherwise reissue it.
   - type: LinkedIn
     url: https://www.linkedin.com/company/tango-io
   - type: Website
@@ -142,8 +129,6 @@ common:
     url: json-ld/tango-context.jsonld
   - type: SpectralRules
     url: rules/tango-rules.yml
-  - type: NaftikoCapabilities
-    url: capabilities/reward-automation.yaml
   - type: Vocabulary
     url: vocabulary/tango-vocabulary.yml
   - type: Integrations

@@ -1,0 +1,4756 @@
+{
+  "item": [
+    {
+      "id": "87b6d1be-a39e-4b32-9aff-d0f7d87fe8b2",
+      "name": "Customers",
+      "description": {
+        "content": "Manage customer accounts within the Tango platform",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "000a386b-1f17-4751-813a-6c65bfd04392",
+          "name": "List Customers",
+          "request": {
+            "name": "List Customers",
+            "description": {
+              "content": "Retrieve a list of all customers in the platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f5d1000-83d3-4cd9-977e-276cafd6850a",
+              "name": "List of customers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customers\": [\n    {\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"status\": \"active\",\n      \"createdAt\": \"2001-11-21T07:45:06.748Z\",\n      \"updatedAt\": \"1964-06-08T23:52:55.626Z\"\n    },\n    {\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"status\": \"active\",\n      \"createdAt\": \"1947-06-02T18:11:33.923Z\",\n      \"updatedAt\": \"1948-09-16T18:30:32.640Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd43f0f0-255c-494a-9eb0-74da11749c21",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1996-07-29T04:52:31.449Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 5585,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2943896b-1b25-4adc-ad56-8781578bcb32",
+          "name": "Create Customer",
+          "request": {
+            "name": "Create Customer",
+            "description": {
+              "content": "Create a new customer account in the platform.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52d81a4a-1d47-44c2-8a71-01aedfca74c1",
+              "name": "Customer created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"status\": \"active\",\n  \"createdAt\": \"2000-01-16T22:43:28.806Z\",\n  \"updatedAt\": \"1969-12-21T17:28:09.988Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86fd6802-ff55-4708-98ae-a1ef7f0a37dc",
+              "name": "Bad request - invalid parameters or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1976-10-05T06:32:50.751Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 8223,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fc742c8-75e3-4332-b1a0-757fd18df4c6",
+              "name": "Authentication credentials missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1976-10-05T06:32:50.751Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 8223,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b0dc2a4-8286-447c-a32a-c05c3ce5c14c",
+          "name": "Get Customer",
+          "request": {
+            "name": "Get Customer",
+            "description": {
+              "content": "Retrieve details of a specific customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e71e26b1-b1fb-4bc3-a894-725a6097be77",
+              "name": "Customer details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"status\": \"active\",\n  \"createdAt\": \"2000-01-16T22:43:28.806Z\",\n  \"updatedAt\": \"1969-12-21T17:28:09.988Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea054c71-d3b6-42c0-9819-4c5e69620f5e",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1996-07-29T04:52:31.449Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 5585,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c922e3b7-c9d4-494b-a3c1-4e57befee96a",
+      "name": "Accounts",
+      "description": {
+        "content": "Manage sub-accounts for customers including balances and funding",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d608a8c2-91fc-4cba-9b12-6548d6d392a9",
+          "name": "List All Accounts",
+          "request": {
+            "name": "List All Accounts",
+            "description": {
+              "content": "Retrieve a list of all accounts across all customers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6445d35-386e-4142-b904-c7b83b459052",
+              "name": "List of accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 1820.131484397658,\n      \"status\": \"inactive\",\n      \"createdAt\": \"1973-05-01T13:49:35.419Z\",\n      \"updatedAt\": \"2010-09-28T21:47:02.372Z\"\n    },\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 7138.121802467324,\n      \"status\": \"active\",\n      \"createdAt\": \"1964-10-14T02:50:02.541Z\",\n      \"updatedAt\": \"2017-07-14T08:12:15.225Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbd70256-d0d5-4760-986c-cd02d151b11f",
+          "name": "List Customer Accounts",
+          "request": {
+            "name": "List Customer Accounts",
+            "description": {
+              "content": "Retrieve all accounts for a specific customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70f79839-6406-4b0f-b6bf-0625a5980f16",
+              "name": "List of accounts for the customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 1820.131484397658,\n      \"status\": \"inactive\",\n      \"createdAt\": \"1973-05-01T13:49:35.419Z\",\n      \"updatedAt\": \"2010-09-28T21:47:02.372Z\"\n    },\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 7138.121802467324,\n      \"status\": \"active\",\n      \"createdAt\": \"1964-10-14T02:50:02.541Z\",\n      \"updatedAt\": \"2017-07-14T08:12:15.225Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "425c4ec7-ea27-4674-8e07-bfd22dae4496",
+          "name": "Create Account",
+          "request": {
+            "name": "Create Account",
+            "description": {
+              "content": "Create a new account for a specific customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"currencyCode\": \"USD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec824e16-2e38-473d-983a-b81f95617247",
+              "name": "Account created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"currencyCode\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 2536.8960409906394,\n  \"status\": \"active\",\n  \"createdAt\": \"1959-04-05T03:40:02.294Z\",\n  \"updatedAt\": \"1967-12-22T07:40:57.598Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdcffdca-c57b-4540-ac30-3a755b66cfa0",
+          "name": "Get Account",
+          "request": {
+            "name": "Get Account",
+            "description": {
+              "content": "Retrieve details of a specific account including current balance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee2791f7-282e-4872-9838-02ea414f1908",
+              "name": "Account details with balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 2536.8960409906394,\n  \"status\": \"active\",\n  \"createdAt\": \"1959-04-05T03:40:02.294Z\",\n  \"updatedAt\": \"1967-12-22T07:40:57.598Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d64bd2da-0d6b-45f4-a7c8-0ceeedf8908f",
+          "name": "Update Account",
+          "request": {
+            "name": "Update Account",
+            "description": {
+              "content": "Modify settings for an existing account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "443bb235-8e17-42f2-99dc-9dc19051affa",
+              "name": "Account updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 2536.8960409906394,\n  \"status\": \"active\",\n  \"createdAt\": \"1959-04-05T03:40:02.294Z\",\n  \"updatedAt\": \"1967-12-22T07:40:57.598Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f7f8ea13-9c03-4dbb-b2b3-d175a833e47e",
+      "name": "Low Balance Alerts",
+      "description": {
+        "content": "Configure low balance alerts for accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1ace3a1b-36c9-414e-b4db-38c9c381eddc",
+          "name": "Create Low Balance Alert",
+          "request": {
+            "name": "Create Low Balance Alert",
+            "description": {
+              "content": "Set a low balance alert threshold for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cd4aea3-585b-41b1-897c-8b69b6524b4a",
+              "name": "Alert created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 477.50134058030415,\n  \"emailAddress\": \"RDyXiaQfzOZ@WYxNQDyElaMlugoIfHsXKvetAIv.es\",\n  \"status\": \"string\",\n  \"createdAt\": \"1965-05-30T11:26:28.046Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "40e23cf5-12ce-40f2-a7d5-61a85dbbe91f",
+          "name": "List Low Balance Alerts",
+          "request": {
+            "name": "List Low Balance Alerts",
+            "description": {
+              "content": "List all low balance alerts for a specific account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4e4cadc-dd89-4756-b2f8-3cc5a11a573e",
+              "name": "List of low balance alerts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alerts\": [\n    {\n      \"balanceAlertID\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"threshold\": 1011.8029104122617,\n      \"emailAddress\": \"2xXmyRhHnwGEeE@xuOy.kxi\",\n      \"status\": \"string\",\n      \"createdAt\": \"2000-05-09T12:42:15.995Z\"\n    },\n    {\n      \"balanceAlertID\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"threshold\": 6722.664969229663,\n      \"emailAddress\": \"OSasIUdcub@OcOQPxkBNCcJheDLWKUzh.esa\",\n      \"status\": \"string\",\n      \"createdAt\": \"1986-12-26T19:47:50.976Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c64862c-1944-4d48-af8a-7273d22f7cb7",
+          "name": "Get Low Balance Alert",
+          "request": {
+            "name": "Get Low Balance Alert",
+            "description": {
+              "content": "Retrieve a specific low balance alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8cd8e2b-fbdc-4f5c-a238-55334ceec5bd",
+              "name": "Low balance alert details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 477.50134058030415,\n  \"emailAddress\": \"RDyXiaQfzOZ@WYxNQDyElaMlugoIfHsXKvetAIv.es\",\n  \"status\": \"string\",\n  \"createdAt\": \"1965-05-30T11:26:28.046Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba208ddc-dbe1-4fe3-ac5b-65617f77f9d6",
+          "name": "Update Low Balance Alert",
+          "request": {
+            "name": "Update Low Balance Alert",
+            "description": {
+              "content": "Update an existing low balance alert threshold.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97d2f1b9-4429-40ed-be82-2165d0c7d5ac",
+              "name": "Alert updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 477.50134058030415,\n  \"emailAddress\": \"RDyXiaQfzOZ@WYxNQDyElaMlugoIfHsXKvetAIv.es\",\n  \"status\": \"string\",\n  \"createdAt\": \"1965-05-30T11:26:28.046Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e687ef7f-0b54-4e33-94fe-7b217b52de39",
+          "name": "Delete Low Balance Alert",
+          "request": {
+            "name": "Delete Low Balance Alert",
+            "description": {
+              "content": "Remove a low balance alert from an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "836e09d3-7c70-4635-a37b-621da7446cc5",
+              "name": "Alert deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a40daa05-0583-474b-90d1-76c3f81de822",
+      "name": "Funding",
+      "description": {
+        "content": "Fund accounts via credit card deposits and fund transfers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "032a2341-08e7-49c1-9fe3-f5c8f9435302",
+          "name": "Create Credit Card Deposit",
+          "request": {
+            "name": "Create Credit Card Deposit",
+            "description": {
+              "content": "Fund an account by processing a credit card deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCardDeposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"creditCardToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "383d3e7a-0ccc-42ff-bce9-4a7adaec01bc",
+              "name": "Deposit created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCardDeposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"creditCardToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositId\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"amount\": 5502.116165409403,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"1998-01-15T17:10:21.874Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a4b24d1-af54-4d11-91ca-2e8194939bbb",
+          "name": "Get Credit Card Deposit",
+          "request": {
+            "name": "Get Credit Card Deposit",
+            "description": {
+              "content": "Retrieve details of a specific credit card deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCardDeposits",
+                ":depositId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "depositId",
+                  "description": "(Required) The deposit identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ac6070f1-ef63-4647-9d4a-105ab5c37e63",
+              "name": "Deposit details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCardDeposits",
+                    ":depositId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "depositId",
+                      "description": "(Required) The deposit identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositId\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"amount\": 5502.116165409403,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"1998-01-15T17:10:21.874Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99d70377-9a4c-482a-99f9-45ba10ab4376",
+          "name": "List Credit Cards",
+          "request": {
+            "name": "List Credit Cards",
+            "description": {
+              "content": "List all registered credit cards on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cccc883-c923-4fac-98b4-04e157ad41a9",
+              "name": "List of registered credit cards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"creditCards\": [\n    {\n      \"token\": \"string\",\n      \"lastFour\": \"string\",\n      \"expirationDate\": \"string\",\n      \"cardType\": \"AMEX\",\n      \"status\": \"string\"\n    },\n    {\n      \"token\": \"string\",\n      \"lastFour\": \"string\",\n      \"expirationDate\": \"string\",\n      \"cardType\": \"VISA\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bb5dd15-5d3b-4843-a25a-f9bcaa843214",
+          "name": "Register Credit Card",
+          "request": {
+            "name": "Register Credit Card",
+            "description": {
+              "content": "Register a new credit card for funding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardNumber\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"cvv\": \"<string>\",\n  \"billingAddress\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4ff14218-0399-4b34-b6a8-ad1e6bb8f785",
+              "name": "Credit card registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cardNumber\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"cvv\": \"<string>\",\n  \"billingAddress\": {\n    \"addressLine1\": \"string\",\n    \"addressLine2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"lastFour\": \"string\",\n  \"expirationDate\": \"string\",\n  \"cardType\": \"DISCOVER\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f45dfe6a-1a91-4f63-a6d9-2e6c5c1b0a71",
+          "name": "Get Credit Card",
+          "request": {
+            "name": "Get Credit Card",
+            "description": {
+              "content": "Retrieve details of a specific registered credit card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) The credit card token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3b32ddb-c839-4350-95aa-bd17be7cbc6f",
+              "name": "Credit card details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) The credit card token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"lastFour\": \"string\",\n  \"expirationDate\": \"string\",\n  \"cardType\": \"DISCOVER\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f21a4fb-e1b7-4d5f-9497-04d624172b5e",
+          "name": "List Fund Transfers",
+          "request": {
+            "name": "List Fund Transfers",
+            "description": {
+              "content": "List fund transfer history for the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transferFunds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "915ac2db-ec1e-49f4-bb71-1f846b263387",
+              "name": "List of fund transfers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transferFunds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transfers\": [\n    {\n      \"transferId\": \"string\",\n      \"fromAccountIdentifier\": \"string\",\n      \"toAccountIdentifier\": \"string\",\n      \"amount\": 9591.782495758926,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"2022-02-14T16:57:58.197Z\"\n    },\n    {\n      \"transferId\": \"string\",\n      \"fromAccountIdentifier\": \"string\",\n      \"toAccountIdentifier\": \"string\",\n      \"amount\": 7800.282210524481,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1950-09-22T13:59:02.273Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f35e0246-86b6-4309-8895-5489cc5050c6",
+      "name": "Catalog",
+      "description": {
+        "content": "Browse the global digital reward catalog",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3c5bbdcd-86fa-444f-9c39-d709299cd6ac",
+          "name": "Get Catalog",
+          "request": {
+            "name": "Get Catalog",
+            "description": {
+              "content": "Retrieve the full digital reward catalog including all available brands and products accessible to the authenticated customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "catalogs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9768f220-8d20-454b-8d25-a42239592e58",
+              "name": "Full reward catalog",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "catalogs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"brands\": [\n    {\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"description\": \"string\",\n      \"imageUrls\": {\n        \"200w-326ppi\": \"string\",\n        \"200w\": \"string\"\n      },\n      \"items\": [\n        {\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"valueType\": \"FIXED_VALUE\",\n          \"faceValue\": 3144.2745213406197,\n          \"minValue\": 3209.6997494205602,\n          \"maxValue\": 9751.333422525091,\n          \"countries\": [\n            \"string\",\n            \"string\"\n          ],\n          \"credentialTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"string\"\n        },\n        {\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"valueType\": \"FIXED_VALUE\",\n          \"faceValue\": 2480.9533691128913,\n          \"minValue\": 9603.453981182667,\n          \"maxValue\": 5286.916896116914,\n          \"countries\": [\n            \"string\",\n            \"string\"\n          ],\n          \"credentialTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"string\"\n        }\n      ],\n      \"createdDate\": \"1964-11-10T04:59:16.958Z\",\n      \"lastUpdateDate\": \"1999-08-29T15:17:04.137Z\",\n      \"status\": \"string\"\n    },\n    {\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"description\": \"string\",\n      \"imageUrls\": {\n        \"200w-326ppi\": \"string\",\n        \"200w\": \"string\"\n      },\n      \"items\": [\n        {\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"valueType\": \"FIXED_VALUE\",\n          \"faceValue\": 5794.283512384674,\n          \"minValue\": 3065.071937053251,\n          \"maxValue\": 9892.601786001078,\n          \"countries\": [\n            \"string\",\n            \"string\"\n          ],\n          \"credentialTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"string\"\n        },\n        {\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"currencyCode\": \"string\",\n          \"valueType\": \"FIXED_VALUE\",\n          \"faceValue\": 4160.579356220037,\n          \"minValue\": 9912.980290349944,\n          \"maxValue\": 6465.425778024813,\n          \"countries\": [\n            \"string\",\n            \"string\"\n          ],\n          \"credentialTypes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"string\"\n        }\n      ],\n      \"createdDate\": \"2017-07-24T20:05:16.275Z\",\n      \"lastUpdateDate\": \"1995-03-19T18:48:34.927Z\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1811a191-b78d-4248-94bc-0ad481a57a67",
+          "name": "List Brand Categories",
+          "request": {
+            "name": "List Brand Categories",
+            "description": {
+              "content": "Retrieve all available brand categories for catalog filtering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "brandCategories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fd8a9bf-d0a5-42a2-aeab-f7d9ffe79d34",
+              "name": "List of brand categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "brandCategories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"brandCategories\": [\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"displayName\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "498fea31-709c-4c20-8961-bb3ae74a6698",
+          "name": "List Choice Products",
+          "request": {
+            "name": "List Choice Products",
+            "description": {
+              "content": "List all available Tango Choice products.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "choiceProducts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cca90339-6058-486c-bf0a-a06eeabc4ddb",
+              "name": "List of Choice products",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "choiceProducts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"choiceProducts\": [\n    {\n      \"utid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"currencyCode\": \"string\",\n      \"minValue\": 4051.136847378252,\n      \"maxValue\": 9881.040910766851,\n      \"status\": \"string\"\n    },\n    {\n      \"utid\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"currencyCode\": \"string\",\n      \"minValue\": 2580.431840609606,\n      \"maxValue\": 1493.9178990054324,\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a139a818-2ee9-471b-86a8-91f51d07e5f9",
+          "name": "Get Choice Product",
+          "request": {
+            "name": "Get Choice Product",
+            "description": {
+              "content": "Retrieve details of a specific Choice product.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "choiceProducts",
+                ":utid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "utid",
+                  "description": "(Required) The unique product identifier (UTID)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6ab5d8e-e057-4455-92fa-7dae6e7ccffb",
+              "name": "Choice product details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "choiceProducts",
+                    ":utid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "utid",
+                      "description": "(Required) The unique product identifier (UTID)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"utid\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"currencyCode\": \"string\",\n  \"minValue\": 3385.0670561571874,\n  \"maxValue\": 9416.40136652545,\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "09f3c2ce-dbdc-47d5-bfdd-75b35336b1b1",
+      "name": "Orders",
+      "description": {
+        "content": "Place and manage reward orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "231164e0-67a6-461b-9ef0-2ad1062338da",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {
+              "content": "Retrieve a list of orders placed by the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Filter orders from this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Filter orders up to this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "elements",
+                  "value": "100",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b43ba6ce-6b5c-4224-ae73-dfbd88e9c771",
+              "name": "List of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "elements",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"referenceOrderID\": \"string\",\n      \"orderRefID\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"amount\": 7026.070045253827,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"lineItems\": [\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 9625.953936504016,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"FROZEN\",\n          \"createdAt\": \"1960-04-21T10:00:03.094Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 114.61190914288322,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"PENDING\",\n          \"createdAt\": \"2010-06-16T19:56:21.445Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"createdAt\": \"1975-04-19T05:58:49.928Z\"\n    },\n    {\n      \"referenceOrderID\": \"string\",\n      \"orderRefID\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"amount\": 8675.09720126591,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"lineItems\": [\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 2034.7357611273965,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"PENDING\",\n          \"createdAt\": \"1991-12-08T15:43:51.516Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 728.6481821166735,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"PENDING\",\n          \"createdAt\": \"1961-01-11T23:18:52.739Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"createdAt\": \"1952-12-22T06:56:18.450Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cf4182db-451d-4fc3-a10c-f679da83559d",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Place a new reward order. This deducts the reward value from the specified account balance and delivers the digital reward to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"sender\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1aa29e5e-fdab-45fc-8e44-cdb2dc78a2ae",
+              "name": "Order placed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"email\": \"dBcPRpmh4wG@OWIxAgFqsZF.qqq\"\n  },\n  \"sender\": {\n    \"name\": \"string\",\n    \"email\": \"smb7HJm@sASyewW.zxx\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 4720.615992097797,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4487.426761075319,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"1949-08-31T17:48:49.042Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4740.521005863864,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"PENDING\",\n      \"createdAt\": \"1956-01-06T08:37:34.541Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"1983-05-19T19:53:00.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27f953ca-9c89-4264-9042-c4daff28900e",
+              "name": "Bad request - invalid parameters or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"email\": \"dBcPRpmh4wG@OWIxAgFqsZF.qqq\"\n  },\n  \"sender\": {\n    \"name\": \"string\",\n    \"email\": \"smb7HJm@sASyewW.zxx\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1996-07-29T04:52:31.449Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 5585,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e05b0ff-8c7a-476f-9ee6-8d58b0563efc",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Retrieve details of a specific order by reference ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":referenceOrderID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceOrderID",
+                  "description": "(Required) The reference order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a0056203-56c5-45f2-aedc-e49b32c031de",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":referenceOrderID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceOrderID",
+                      "description": "(Required) The reference order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 4720.615992097797,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4487.426761075319,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"1949-08-31T17:48:49.042Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4740.521005863864,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"PENDING\",\n      \"createdAt\": \"1956-01-06T08:37:34.541Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"1983-05-19T19:53:00.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7813ebd-276d-47a9-acea-3f523440e1ed",
+          "name": "Resend Order",
+          "request": {
+            "name": "Resend Order",
+            "description": {
+              "content": "Resend a fulfilled order to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":referenceOrderID",
+                "resends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceOrderID",
+                  "description": "(Required) The reference order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0e603f4-001f-46c4-a7fb-9f149005ac34",
+              "name": "Order resent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":referenceOrderID",
+                    "resends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceOrderID",
+                      "description": "(Required) The reference order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 4720.615992097797,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4487.426761075319,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"1949-08-31T17:48:49.042Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4740.521005863864,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"PENDING\",\n      \"createdAt\": \"1956-01-06T08:37:34.541Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"1983-05-19T19:53:00.724Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "61d9e5fc-7e13-4ace-85c3-f6a6cd5a37a0",
+      "name": "Line Items",
+      "description": {
+        "content": "Manage individual order line items",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6851f792-697c-41b3-b9b3-f852bf6cb97b",
+          "name": "List Line Items",
+          "request": {
+            "name": "List Line Items",
+            "description": {
+              "content": "Retrieve a list of all order line items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "elements",
+                  "value": "100"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "27e9c965-e1c9-4f71-b2f7-5607c6b30174",
+              "name": "List of line items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "elements",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 6634.259089019441,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"1990-09-21T21:58:31.813Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 1667.9686746039158,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"createdAt\": \"1999-12-19T13:50:16.331Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9695008b-f729-4cb2-8440-3243decedeee",
+          "name": "List Line Item Reason Codes",
+          "request": {
+            "name": "List Line Item Reason Codes",
+            "description": {
+              "content": "Retrieve available reason codes for line item status changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                "reasonCodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "81420af4-d999-4805-b890-1b1e3e275f14",
+              "name": "List of reason codes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    "reasonCodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reasonCodes\": [\n    {\n      \"id\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ec3dfffa-6f53-4d96-b4c5-e0d682dbf4b9",
+          "name": "Get Line Item",
+          "request": {
+            "name": "Get Line Item",
+            "description": {
+              "content": "Retrieve details of a specific order line item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c05df95-bc27-4c31-8fd1-a5a3c59d06d4",
+              "name": "Line item details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20da0e73-6401-45d9-bc1c-461d5191af88",
+          "name": "Update Line Item",
+          "request": {
+            "name": "Update Line Item",
+            "description": {
+              "content": "Update metadata or status on a line item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"notes\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c50b0bc6-1962-4a36-bfb1-86f725cb743a",
+              "name": "Line item updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"notes\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "036f59f5-5f86-4623-8c05-72b095c4407d",
+          "name": "Cancel Line Item",
+          "request": {
+            "name": "Cancel Line Item",
+            "description": {
+              "content": "Cancel a pending line item before fulfillment.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId",
+                "cancel"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e30797e3-adf0-45d0-b80d-2a6ae0a2a55a",
+              "name": "Line item cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId",
+                    "cancel"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1168610d-fbb0-4108-94aa-dfc5004c197d",
+          "name": "Freeze Line Item",
+          "request": {
+            "name": "Freeze Line Item",
+            "description": {
+              "content": "Freeze a line item to temporarily suspend delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId",
+                "freeze"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f243059d-7942-4fc2-9a92-5f5a33bfe981",
+              "name": "Line item frozen",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId",
+                    "freeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e8809691-7a91-4fd4-b6a6-e944fa63de49",
+          "name": "Unfreeze Line Item",
+          "request": {
+            "name": "Unfreeze Line Item",
+            "description": {
+              "content": "Unfreeze a previously frozen line item to resume delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId",
+                "unfreeze"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b99274a3-1d20-4a04-84d9-5120499107ef",
+              "name": "Line item unfrozen",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId",
+                    "unfreeze"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dce3639-d195-47d5-8257-d066152623a8",
+          "name": "Reissue Line Item",
+          "request": {
+            "name": "Reissue Line Item",
+            "description": {
+              "content": "Reissue a failed or expired line item.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId",
+                "reissue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22d6d976-c1a2-4e8b-bece-2b576903d63f",
+              "name": "Line item reissued",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId",
+                    "reissue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b6ce74c1-faa5-4ec3-84cf-ff9b4c4fe38d",
+          "name": "Resend Line Item",
+          "request": {
+            "name": "Resend Line Item",
+            "description": {
+              "content": "Resend a fulfilled line item to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lineItems",
+                ":referenceLineItemId",
+                "resends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceLineItemId",
+                  "description": "(Required) The reference line item ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1de2a899-864e-4a44-8c00-deca084ed1c1",
+              "name": "Line item resent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lineItems",
+                    ":referenceLineItemId",
+                    "resends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceLineItemId",
+                      "description": "(Required) The reference line item ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceLineItemId\": \"string\",\n  \"referenceOrderID\": \"string\",\n  \"amount\": 5575.114198008646,\n  \"currencyCode\": \"string\",\n  \"utid\": \"string\",\n  \"rewardName\": \"string\",\n  \"brandCode\": \"string\",\n  \"brandName\": \"string\",\n  \"status\": \"PENDING\",\n  \"createdAt\": \"1996-06-05T04:05:47.262Z\",\n  \"fulfillment\": {\n    \"fulfillmentType\": \"string\",\n    \"cardNumber\": \"string\",\n    \"cardPin\": \"string\",\n    \"redemptionUrl\": \"string\",\n    \"credentialList\": [\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      },\n      {\n        \"label\": \"string\",\n        \"value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6993dcab-d53a-4f84-abea-60776a3d02cb",
+      "name": "Digital Templates",
+      "description": {
+        "content": "Create and manage email delivery templates for rewards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e64b3b80-1d9a-459d-af29-f36716ea3e0e",
+          "name": "List Digital Templates",
+          "request": {
+            "name": "List Digital Templates",
+            "description": {
+              "content": "List all configured digital email delivery templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da7fd77f-9d0d-4ceb-a602-f372788dbda6",
+              "name": "List of digital templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"templates\": [\n    {\n      \"etid\": \"string\",\n      \"name\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1954-04-09T09:59:58.888Z\",\n      \"updatedAt\": \"1986-09-25T02:52:57.095Z\"\n    },\n    {\n      \"etid\": \"string\",\n      \"name\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"2001-04-26T11:09:52.602Z\",\n      \"updatedAt\": \"1953-07-23T13:55:56.688Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa0ad096-8568-41bc-8d60-684274268dfc",
+          "name": "Create Digital Template",
+          "request": {
+            "name": "Create Digital Template",
+            "description": {
+              "content": "Create a new email delivery template for reward notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b785d366-f887-4b4d-a6c0-3646b2d8a891",
+              "name": "Template created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"2013-02-04T14:20:41.513Z\",\n  \"updatedAt\": \"1979-06-03T17:35:57.840Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6931c937-372b-4a93-9d1a-9b2ef934c8ec",
+          "name": "Get Digital Template",
+          "request": {
+            "name": "Get Digital Template",
+            "description": {
+              "content": "Retrieve a specific digital email template by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "875e4564-25db-4e5b-87b2-d40652ef3bc5",
+              "name": "Template details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"2013-02-04T14:20:41.513Z\",\n  \"updatedAt\": \"1979-06-03T17:35:57.840Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3e65200-dfb5-4c75-a4b1-9cd18749e09b",
+          "name": "Update Digital Template",
+          "request": {
+            "name": "Update Digital Template",
+            "description": {
+              "content": "Update an existing digital email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62161530-8115-4193-bef6-f780afe4db55",
+              "name": "Template updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"2013-02-04T14:20:41.513Z\",\n  \"updatedAt\": \"1979-06-03T17:35:57.840Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa02b449-10cc-4d3d-8411-8f66cd80a3a3",
+          "name": "Delete Digital Template",
+          "request": {
+            "name": "Delete Digital Template",
+            "description": {
+              "content": "Delete a digital email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97c2085e-e244-4afa-8a86-147ac268d4b7",
+              "name": "Template deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a0fc3f51-8de9-4c50-b00f-32b76c5bf6b3",
+      "name": "Reference Data",
+      "description": {
+        "content": "Exchange rates, reward countries, and credential types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "739dd8be-b242-40bb-856d-f179adbd3594",
+          "name": "Get Exchange Rates",
+          "request": {
+            "name": "Get Exchange Rates",
+            "description": {
+              "content": "Retrieve current exchange rates for all supported currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "exchangerates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79dd4133-7a69-4687-aa9f-d1105d371aa7",
+              "name": "Current exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exchangeRates\": [\n    {\n      \"currencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"exchangeRate\": 4488.972520453798,\n      \"updatedAt\": \"2021-08-05T06:38:22.758Z\"\n    },\n    {\n      \"currencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"exchangeRate\": 815.2023431859667,\n      \"updatedAt\": \"1980-04-16T09:53:59.735Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0144fe02-18ab-4950-953f-ad47b8a9d323",
+          "name": "List Reward Countries",
+          "request": {
+            "name": "List Reward Countries",
+            "description": {
+              "content": "List all countries where digital rewards can be delivered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewardCountries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "744ce945-e82c-4076-98f8-046e2d892b9a",
+              "name": "List of supported reward countries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewardCountries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"countries\": [\n    {\n      \"countryCode\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\"\n    },\n    {\n      \"countryCode\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5f05c551-ddb4-4784-8d4a-294d8897c778",
+          "name": "List Credential Types",
+          "request": {
+            "name": "List Credential Types",
+            "description": {
+              "content": "Retrieve available credential types for reward delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credentialtypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e7f67ee9-119b-426f-85c9-2f2f321688a7",
+              "name": "List of credential types",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credentialtypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credentialTypes\": [\n    {\n      \"credentialType\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"credentialType\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "644e2e93-91ee-4023-a589-03fecc8b2cb5",
+    "name": "Tango RaaS API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}
