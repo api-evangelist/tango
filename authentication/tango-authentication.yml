@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/tango-raas-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic Auth using platform credentials (username/password)
+  sources:
+  - openapi/tango-raas-api-openapi.yml

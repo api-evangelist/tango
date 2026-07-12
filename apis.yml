@@ -58,6 +58,10 @@ apis:
       - type: Email
         url: mailto:devsupport@tangocard.com
 common:
+  - type: DomainSecurity
+    url: security/tango-domain-security.yml
+  - type: Authentication
+    url: authentication/tango-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/tango/overview
   - type: Arazzo
@@ -132,6 +136,8 @@ common:
     url: https://www.tangocard.com/solutions/integrations
   - type: LlmsText
     url: https://developers.tangocard.com/llms.txt
+  - url: https://www.tangocard.com/blog/
+    type: Blog
 integrations:
   - name: The Microsoft teams logo.
   - name: The Marketo company logo.
