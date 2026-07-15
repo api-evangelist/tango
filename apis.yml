@@ -58,6 +58,8 @@ apis:
       - type: Email
         url: mailto:devsupport@tangocard.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/tango-agentic-access.yml
   - type: DomainSecurity
     url: security/tango-domain-security.yml
   - type: Authentication
