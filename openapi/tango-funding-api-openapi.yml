@@ -1,0 +1,257 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Funding API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Funding
+  description: Fund accounts via credit card deposits and fund transfers
+paths:
+  /creditCardDeposits:
+    post:
+      operationId: createCreditCardDeposit
+      summary: Create Credit Card Deposit
+      description: Fund an account by processing a credit card deposit.
+      tags:
+      - Funding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreditCardDepositRequest'
+      responses:
+        '201':
+          description: Deposit created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditCardDeposit'
+  /creditCardDeposits/{depositId}:
+    get:
+      operationId: getCreditCardDeposit
+      summary: Get Credit Card Deposit
+      description: Retrieve details of a specific credit card deposit.
+      tags:
+      - Funding
+      parameters:
+      - name: depositId
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The deposit identifier
+      responses:
+        '200':
+          description: Deposit details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditCardDeposit'
+  /creditCards:
+    get:
+      operationId: listCreditCards
+      summary: List Credit Cards
+      description: List all registered credit cards on the account.
+      tags:
+      - Funding
+      responses:
+        '200':
+          description: List of registered credit cards
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creditCards:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CreditCard'
+    post:
+      operationId: registerCreditCard
+      summary: Register Credit Card
+      description: Register a new credit card for funding.
+      tags:
+      - Funding
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterCreditCardRequest'
+      responses:
+        '201':
+          description: Credit card registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditCard'
+  /creditCards/{token}:
+    get:
+      operationId: getCreditCard
+      summary: Get Credit Card
+      description: Retrieve details of a specific registered credit card.
+      tags:
+      - Funding
+      parameters:
+      - name: token
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The credit card token
+      responses:
+        '200':
+          description: Credit card details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreditCard'
+  /transferFunds:
+    get:
+      operationId: listFundTransfers
+      summary: List Fund Transfers
+      description: List fund transfer history for the account.
+      tags:
+      - Funding
+      responses:
+        '200':
+          description: List of fund transfers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transfers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FundTransfer'
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+    CreditCardDepositRequest:
+      type: object
+      required:
+      - customerIdentifier
+      - accountIdentifier
+      - amount
+      - creditCardToken
+      properties:
+        customerIdentifier:
+          type: string
+        accountIdentifier:
+          type: string
+        amount:
+          type: number
+          format: double
+        creditCardToken:
+          type: string
+    FundTransfer:
+      type: object
+      properties:
+        transferId:
+          type: string
+        fromAccountIdentifier:
+          type: string
+        toAccountIdentifier:
+          type: string
+        amount:
+          type: number
+          format: double
+        currencyCode:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    RegisterCreditCardRequest:
+      type: object
+      required:
+      - cardNumber
+      - expirationDate
+      - cvv
+      - billingAddress
+      properties:
+        cardNumber:
+          type: string
+        expirationDate:
+          type: string
+        cvv:
+          type: string
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+    CreditCardDeposit:
+      type: object
+      properties:
+        depositId:
+          type: string
+        accountIdentifier:
+          type: string
+        customerIdentifier:
+          type: string
+        amount:
+          type: number
+          format: double
+        currencyCode:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    CreditCard:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Credit card token
+        lastFour:
+          type: string
+          description: Last four digits
+        expirationDate:
+          type: string
+          description: Expiration date (MM/YY)
+        cardType:
+          type: string
+          enum:
+          - VISA
+          - MASTERCARD
+          - AMEX
+          - DISCOVER
+        status:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

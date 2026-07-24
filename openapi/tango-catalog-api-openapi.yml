@@ -1,0 +1,200 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Catalog API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Catalog
+  description: Browse the global digital reward catalog
+paths:
+  /catalogs:
+    get:
+      operationId: getCatalog
+      summary: Get Catalog
+      description: Retrieve the full digital reward catalog including all available brands and products accessible to the authenticated customer.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: Full reward catalog
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brands:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Brand'
+  /brandCategories:
+    get:
+      operationId: listBrandCategories
+      summary: List Brand Categories
+      description: Retrieve all available brand categories for catalog filtering.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: List of brand categories
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  brandCategories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BrandCategory'
+  /choiceProducts:
+    get:
+      operationId: listChoiceProducts
+      summary: List Choice Products
+      description: List all available Tango Choice products.
+      tags:
+      - Catalog
+      responses:
+        '200':
+          description: List of Choice products
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  choiceProducts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChoiceProduct'
+  /choiceProducts/{utid}:
+    get:
+      operationId: getChoiceProduct
+      summary: Get Choice Product
+      description: Retrieve details of a specific Choice product.
+      tags:
+      - Catalog
+      parameters:
+      - name: utid
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique product identifier (UTID)
+      responses:
+        '200':
+          description: Choice product details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChoiceProduct'
+components:
+  schemas:
+    ChoiceProduct:
+      type: object
+      properties:
+        utid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        currencyCode:
+          type: string
+        minValue:
+          type: number
+          format: double
+        maxValue:
+          type: number
+          format: double
+        status:
+          type: string
+    BrandCategory:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        description:
+          type: string
+    Item:
+      type: object
+      properties:
+        utid:
+          type: string
+          description: Universal Token ID - unique product identifier
+        rewardName:
+          type: string
+        currencyCode:
+          type: string
+        valueType:
+          type: string
+          enum:
+          - FIXED_VALUE
+          - VARIABLE_VALUE
+        faceValue:
+          type: number
+          format: double
+        minValue:
+          type: number
+          format: double
+        maxValue:
+          type: number
+          format: double
+        countries:
+          type: array
+          items:
+            type: string
+        credentialTypes:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+    Brand:
+      type: object
+      properties:
+        brandCode:
+          type: string
+          description: Unique brand identifier
+        brandName:
+          type: string
+        description:
+          type: string
+        imageUrls:
+          type: object
+          properties:
+            200w-326ppi:
+              type: string
+            200w:
+              type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdateDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

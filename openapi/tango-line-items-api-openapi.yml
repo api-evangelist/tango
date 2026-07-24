@@ -1,0 +1,277 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Line Items API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Line Items
+  description: Manage individual order line items
+paths:
+  /lineItems:
+    get:
+      operationId: listLineItems
+      summary: List Line Items
+      description: Retrieve a list of all order line items.
+      tags:
+      - Line Items
+      parameters:
+      - name: startDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: endDate
+        in: query
+        schema:
+          type: string
+          format: date-time
+      - name: elements
+        in: query
+        schema:
+          type: integer
+          default: 100
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: List of line items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lineItems:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LineItem'
+  /lineItems/reasonCodes:
+    get:
+      operationId: listLineItemReasonCodes
+      summary: List Line Item Reason Codes
+      description: Retrieve available reason codes for line item status changes.
+      tags:
+      - Line Items
+      responses:
+        '200':
+          description: List of reason codes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reasonCodes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReasonCode'
+  /lineItems/{referenceLineItemId}:
+    get:
+      operationId: getLineItem
+      summary: Get Line Item
+      description: Retrieve details of a specific order line item.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+    patch:
+      operationId: updateLineItem
+      summary: Update Line Item
+      description: Update metadata or status on a line item.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                notes:
+                  type: string
+      responses:
+        '200':
+          description: Line item updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+  /lineItems/{referenceLineItemId}/cancel:
+    post:
+      operationId: cancelLineItem
+      summary: Cancel Line Item
+      description: Cancel a pending line item before fulfillment.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+  /lineItems/{referenceLineItemId}/freeze:
+    post:
+      operationId: freezeLineItem
+      summary: Freeze Line Item
+      description: Freeze a line item to temporarily suspend delivery.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item frozen
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+  /lineItems/{referenceLineItemId}/unfreeze:
+    post:
+      operationId: unfreezeLineItem
+      summary: Unfreeze Line Item
+      description: Unfreeze a previously frozen line item to resume delivery.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item unfrozen
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+  /lineItems/{referenceLineItemId}/reissue:
+    post:
+      operationId: reissueLineItem
+      summary: Reissue Line Item
+      description: Reissue a failed or expired line item.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item reissued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+  /lineItems/{referenceLineItemId}/resends:
+    post:
+      operationId: resendLineItem
+      summary: Resend Line Item
+      description: Resend a fulfilled line item to the recipient.
+      tags:
+      - Line Items
+      parameters:
+      - $ref: '#/components/parameters/referenceLineItemId'
+      responses:
+        '200':
+          description: Line item resent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LineItem'
+components:
+  schemas:
+    LineItem:
+      type: object
+      properties:
+        referenceLineItemId:
+          type: string
+        referenceOrderID:
+          type: string
+        amount:
+          type: number
+          format: double
+        currencyCode:
+          type: string
+        utid:
+          type: string
+        rewardName:
+          type: string
+        brandCode:
+          type: string
+        brandName:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - FULFILLED
+          - CANCELLED
+          - FROZEN
+        createdAt:
+          type: string
+          format: date-time
+        fulfillment:
+          $ref: '#/components/schemas/Fulfillment'
+    ReasonCode:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+    Fulfillment:
+      type: object
+      properties:
+        fulfillmentType:
+          type: string
+        cardNumber:
+          type: string
+        cardPin:
+          type: string
+        redemptionUrl:
+          type: string
+        credentialList:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              value:
+                type: string
+  parameters:
+    referenceLineItemId:
+      name: referenceLineItemId
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The reference line item ID
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

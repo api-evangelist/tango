@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Customers API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Customers
+  description: Manage customer accounts within the Tango platform
+paths:
+  /customers:
+    get:
+      operationId: listCustomers
+      summary: List Customers
+      description: Retrieve a list of all customers in the platform.
+      tags:
+      - Customers
+      responses:
+        '200':
+          description: List of customers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  customers:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Customer'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createCustomer
+      summary: Create Customer
+      description: Create a new customer account in the platform.
+      tags:
+      - Customers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomerRequest'
+      responses:
+        '201':
+          description: Customer created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /customers/{customerIdentifier}:
+    get:
+      operationId: getCustomer
+      summary: Get Customer
+      description: Retrieve details of a specific customer.
+      tags:
+      - Customers
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      responses:
+        '200':
+          description: Customer details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    BadRequest:
+      description: Bad request - invalid parameters or missing required fields
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customerIdentifier:
+          type: string
+          description: Unique customer identifier
+        displayName:
+          type: string
+          description: Customer display name
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+          description: Customer status
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+        requestId:
+          type: string
+        path:
+          type: string
+        httpStatusCode:
+          type: integer
+        httpStatus:
+          type: string
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
+    CreateCustomerRequest:
+      type: object
+      required:
+      - customerIdentifier
+      - displayName
+      properties:
+        customerIdentifier:
+          type: string
+          description: Unique identifier for the new customer
+        displayName:
+          type: string
+          description: Display name for the customer
+  parameters:
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

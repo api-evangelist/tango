@@ -1,0 +1,118 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Reference Data API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Reference Data
+  description: Exchange rates, reward countries, and credential types
+paths:
+  /exchangerates:
+    get:
+      operationId: getExchangeRates
+      summary: Get Exchange Rates
+      description: Retrieve current exchange rates for all supported currencies.
+      tags:
+      - Reference Data
+      responses:
+        '200':
+          description: Current exchange rates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  exchangeRates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ExchangeRate'
+  /rewardCountries:
+    get:
+      operationId: listRewardCountries
+      summary: List Reward Countries
+      description: List all countries where digital rewards can be delivered.
+      tags:
+      - Reference Data
+      responses:
+        '200':
+          description: List of supported reward countries
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RewardCountry'
+  /credentialtypes:
+    get:
+      operationId: listCredentialTypes
+      summary: List Credential Types
+      description: Retrieve available credential types for reward delivery.
+      tags:
+      - Reference Data
+      responses:
+        '200':
+          description: List of credential types
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  credentialTypes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CredentialType'
+components:
+  schemas:
+    CredentialType:
+      type: object
+      properties:
+        credentialType:
+          type: string
+        description:
+          type: string
+    RewardCountry:
+      type: object
+      properties:
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        displayName:
+          type: string
+        currencyCode:
+          type: string
+    ExchangeRate:
+      type: object
+      properties:
+        currencyCode:
+          type: string
+        currencyName:
+          type: string
+        exchangeRate:
+          type: number
+          format: double
+        updatedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

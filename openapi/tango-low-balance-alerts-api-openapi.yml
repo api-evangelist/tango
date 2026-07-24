@@ -1,0 +1,186 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Low Balance Alerts API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Low Balance Alerts
+  description: Configure low balance alerts for accounts
+paths:
+  /customers/{customerIdentifier}/accounts/{accountIdentifier}/lowbalance:
+    post:
+      operationId: createLowBalanceAlert
+      summary: Create Low Balance Alert
+      description: Set a low balance alert threshold for an account.
+      tags:
+      - Low Balance Alerts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LowBalanceAlertRequest'
+      responses:
+        '201':
+          description: Alert created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LowBalanceAlert'
+    get:
+      operationId: listLowBalanceAlerts
+      summary: List Low Balance Alerts
+      description: List all low balance alerts for a specific account.
+      tags:
+      - Low Balance Alerts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      responses:
+        '200':
+          description: List of low balance alerts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  alerts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LowBalanceAlert'
+  /customers/{customerIdentifier}/accounts/{accountIdentifier}/lowbalance/{balanceAlertID}:
+    get:
+      operationId: getLowBalanceAlert
+      summary: Get Low Balance Alert
+      description: Retrieve a specific low balance alert.
+      tags:
+      - Low Balance Alerts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      - $ref: '#/components/parameters/balanceAlertID'
+      responses:
+        '200':
+          description: Low balance alert details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LowBalanceAlert'
+    patch:
+      operationId: updateLowBalanceAlert
+      summary: Update Low Balance Alert
+      description: Update an existing low balance alert threshold.
+      tags:
+      - Low Balance Alerts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      - $ref: '#/components/parameters/balanceAlertID'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LowBalanceAlertRequest'
+      responses:
+        '200':
+          description: Alert updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LowBalanceAlert'
+    delete:
+      operationId: deleteLowBalanceAlert
+      summary: Delete Low Balance Alert
+      description: Remove a low balance alert from an account.
+      tags:
+      - Low Balance Alerts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      - $ref: '#/components/parameters/balanceAlertID'
+      responses:
+        '204':
+          description: Alert deleted
+components:
+  schemas:
+    LowBalanceAlertRequest:
+      type: object
+      required:
+      - threshold
+      - emailAddress
+      properties:
+        threshold:
+          type: number
+          format: double
+          description: Alert when balance drops below this amount
+        emailAddress:
+          type: string
+          format: email
+          description: Email address to notify
+    LowBalanceAlert:
+      type: object
+      properties:
+        balanceAlertID:
+          type: string
+        accountIdentifier:
+          type: string
+        customerIdentifier:
+          type: string
+        threshold:
+          type: number
+          format: double
+          description: Alert threshold amount
+        emailAddress:
+          type: string
+          format: email
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  parameters:
+    accountIdentifier:
+      name: accountIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the account
+    balanceAlertID:
+      name: balanceAlertID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the low balance alert
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

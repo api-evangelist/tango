@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Accounts
+  description: Manage sub-accounts for customers including balances and funding
+paths:
+  /accounts:
+    get:
+      operationId: listAccounts
+      summary: List All Accounts
+      description: Retrieve a list of all accounts across all customers.
+      tags:
+      - Accounts
+      responses:
+        '200':
+          description: List of accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
+  /customers/{customerIdentifier}/accounts:
+    get:
+      operationId: listCustomerAccounts
+      summary: List Customer Accounts
+      description: Retrieve all accounts for a specific customer.
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      responses:
+        '200':
+          description: List of accounts for the customer
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  accounts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Account'
+    post:
+      operationId: createAccount
+      summary: Create Account
+      description: Create a new account for a specific customer.
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccountRequest'
+      responses:
+        '201':
+          description: Account created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+  /customers/{customerIdentifier}/accounts/{accountIdentifier}:
+    get:
+      operationId: getAccount
+      summary: Get Account
+      description: Retrieve details of a specific account including current balance.
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      responses:
+        '200':
+          description: Account details with balance
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+    patch:
+      operationId: updateAccount
+      summary: Update Account
+      description: Modify settings for an existing account.
+      tags:
+      - Accounts
+      parameters:
+      - $ref: '#/components/parameters/customerIdentifier'
+      - $ref: '#/components/parameters/accountIdentifier'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccountRequest'
+      responses:
+        '200':
+          description: Account updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+components:
+  parameters:
+    accountIdentifier:
+      name: accountIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the account
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
+  schemas:
+    CreateAccountRequest:
+      type: object
+      required:
+      - accountIdentifier
+      - displayName
+      properties:
+        accountIdentifier:
+          type: string
+        displayName:
+          type: string
+        currencyCode:
+          type: string
+          default: USD
+    Account:
+      type: object
+      properties:
+        accountIdentifier:
+          type: string
+          description: Unique account identifier
+        customerIdentifier:
+          type: string
+          description: Parent customer identifier
+        displayName:
+          type: string
+          description: Account display name
+        currencyCode:
+          type: string
+          description: ISO 4217 currency code
+        currentBalance:
+          type: number
+          format: double
+          description: Current account balance
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    UpdateAccountRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)

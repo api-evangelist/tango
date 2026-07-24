@@ -1,0 +1,159 @@
+openapi: 3.1.0
+info:
+  title: Tango RaaS Accounts Digital Templates API
+  description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
+  version: '2.0'
+  termsOfService: https://www.tangocard.com/terms-of-service/
+  contact:
+    name: Tango Developer Support
+    email: devsupport@tangocard.com
+    url: https://developers.tangocard.com/
+  license:
+    name: Proprietary
+    url: https://www.tangocard.com/terms-of-service/
+servers:
+- url: https://api.tangocard.com/raas/v2
+  description: Production
+- url: https://integration-api.tangocard.com/raas/v2
+  description: Sandbox
+security:
+- basicAuth: []
+tags:
+- name: Digital Templates
+  description: Create and manage email delivery templates for rewards
+paths:
+  /digitalTemplates:
+    get:
+      operationId: listDigitalTemplates
+      summary: List Digital Templates
+      description: List all configured digital email delivery templates.
+      tags:
+      - Digital Templates
+      responses:
+        '200':
+          description: List of digital templates
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DigitalTemplate'
+    post:
+      operationId: createDigitalTemplate
+      summary: Create Digital Template
+      description: Create a new email delivery template for reward notifications.
+      tags:
+      - Digital Templates
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDigitalTemplateRequest'
+      responses:
+        '201':
+          description: Template created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigitalTemplate'
+  /digitalTemplates/{etid}:
+    get:
+      operationId: getDigitalTemplate
+      summary: Get Digital Template
+      description: Retrieve a specific digital email template by ID.
+      tags:
+      - Digital Templates
+      parameters:
+      - $ref: '#/components/parameters/etid'
+      responses:
+        '200':
+          description: Template details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigitalTemplate'
+    patch:
+      operationId: updateDigitalTemplate
+      summary: Update Digital Template
+      description: Update an existing digital email template.
+      tags:
+      - Digital Templates
+      parameters:
+      - $ref: '#/components/parameters/etid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDigitalTemplateRequest'
+      responses:
+        '200':
+          description: Template updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DigitalTemplate'
+    delete:
+      operationId: deleteDigitalTemplate
+      summary: Delete Digital Template
+      description: Delete a digital email template.
+      tags:
+      - Digital Templates
+      parameters:
+      - $ref: '#/components/parameters/etid'
+      responses:
+        '204':
+          description: Template deleted
+components:
+  schemas:
+    CreateDigitalTemplateRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        subject:
+          type: string
+        headerText:
+          type: string
+        messageText:
+          type: string
+        headerImage:
+          type: string
+          format: uri
+    DigitalTemplate:
+      type: object
+      properties:
+        etid:
+          type: string
+          description: Email template identifier
+        name:
+          type: string
+        subject:
+          type: string
+        status:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+  parameters:
+    etid:
+      name: etid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Email template ID
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic Auth using platform credentials (username/password)
