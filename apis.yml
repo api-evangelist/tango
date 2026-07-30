@@ -6,6 +6,19 @@ description: >-
   prepaid cards, and charitable donations directly into their products and workflows. Tango serves loyalty programs,
   research panels, employee recognition platforms, and consumer incentive applications worldwide.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.tangocard.com/wp-content/uploads/2021/06/tango-logo.png
 tags:
   - Catalog Management
@@ -19,44 +32,222 @@ created: '2026-03-16'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: tango:raas-api
-    name: Tango RaaS API
-    description: >-
-      The Tango Rewards-as-a-Service (RaaS) API v2 is a RESTful interface for automating digital reward and incentive
-      delivery. It enables customers to manage accounts and funding, browse a global reward catalog, place and manage
-      orders, configure digital email templates, and receive webhook notifications. The API supports both sandbox and
-      production environments.
-    humanURL: https://developers.tangocard.com/
-    baseURL: https://api.tangocard.com/raas/v2
-    tags:
-      - Accounts
-      - Catalog
-      - Gift Cards
-      - Orders
-      - Rewards
-      - Webhooks
-    properties:
-      - type: Documentation
-        url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
-      - type: Reference
-        url: https://developers.tangocard.com/reference
-      - type: OpenAPI
-        url: openapi/tango-raas-api-openapi.yml
-      - type: GettingStarted
-        url: https://developers.tangocard.com/docs/getting-started
-      - type: Authentication
-        url: https://developers.tangocard.com/docs/authentication
-      - type: Sandbox
-        url: https://portal.sandbox.tangocard.com
-      - type: Portal
-        url: https://portal.tangocard.com
-      - type: ChangeLog
-        url: https://developers.tangocard.com/changelog
-    contact:
-      - type: Support
-        url: https://developers.tangocard.com/
-      - type: Email
-        url: mailto:devsupport@tangocard.com
+- aid: tango:tango-accounts-api
+  name: Tango Accounts API
+  description: Manage sub-accounts for customers including balances and funding
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-catalog-api
+  name: Tango Catalog API
+  description: Browse the global digital reward catalog
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Catalog
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-catalog-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-customers-api
+  name: Tango Customers API
+  description: Manage customer accounts within the Tango platform
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Customers
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-customers-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-digital-templates-api
+  name: Tango Digital Templates API
+  description: Create and manage email delivery templates for rewards
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Digital Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-digital-templates-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-funding-api
+  name: Tango Funding API
+  description: Fund accounts via credit card deposits and fund transfers
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Funding
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-funding-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-line-items-api
+  name: Tango Line Items API
+  description: Manage individual order line items
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Line Items
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-line-items-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-low-balance-alerts-api
+  name: Tango Low Balance Alerts API
+  description: Configure low balance alerts for accounts
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Low Balance Alerts
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-low-balance-alerts-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-orders-api
+  name: Tango Orders API
+  description: Place and manage reward orders
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
+- aid: tango:tango-reference-data-api
+  name: Tango Reference Data API
+  description: Exchange rates, reward countries, and credential types
+  humanURL: https://developers.tangocard.com/
+  baseURL: https://api.tangocard.com/raas/v2
+  tags:
+  - Reference Data
+  properties:
+  - type: OpenAPI
+    url: openapi/tango-reference-data-api-openapi.yml
+  - type: Documentation
+    url: https://developers.tangocard.com/docs/user-guide-tango-api-v2
+  - type: Reference
+    url: https://developers.tangocard.com/reference
+  - type: GettingStarted
+    url: https://developers.tangocard.com/docs/getting-started
+  - type: Authentication
+    url: https://developers.tangocard.com/docs/authentication
+  - type: Sandbox
+    url: https://portal.sandbox.tangocard.com
+  - type: Portal
+    url: https://portal.tangocard.com
+  - type: ChangeLog
+    url: https://developers.tangocard.com/changelog
 common:
   - type: AgenticAccess
     url: agentic-access/tango-agentic-access.yml
