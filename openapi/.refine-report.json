@@ -1,0 +1,30 @@
+{
+  "provider": "tango",
+  "sources": [
+    "tango-accounts-api-openapi.yml",
+    "tango-catalog-api-openapi.yml",
+    "tango-customers-api-openapi.yml",
+    "tango-digital-templates-api-openapi.yml",
+    "tango-funding-api-openapi.yml",
+    "tango-line-items-api-openapi.yml",
+    "tango-low-balance-alerts-api-openapi.yml",
+    "tango-orders-api-openapi.yml",
+    "tango-reference-data-api-openapi.yml"
+  ],
+  "outputs": [
+    "tango-accounts-api-openapi.yml",
+    "tango-catalog-api-openapi.yml",
+    "tango-customers-api-openapi.yml",
+    "tango-digital-templates-api-openapi.yml",
+    "tango-funding-api-openapi.yml",
+    "tango-line-items-api-openapi.yml",
+    "tango-low-balance-alerts-api-openapi.yml",
+    "tango-orders-api-openapi.yml",
+    "tango-reference-data-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
