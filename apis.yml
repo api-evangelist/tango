@@ -310,7 +310,7 @@ common:
   - type: Login
     url: https://portal.tangocard.com
   - type: OpenAPI
-    url: openapi/tango-raas-api-openapi.yml
+    url: openapi/_original/tango-raas-api-openapi.yml
   - type: JSONSchema
     url: json-schema/tango-order-schema.json
   - type: JSONSchema
