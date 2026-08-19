@@ -1,0 +1,521 @@
+{
+  "item": [
+    {
+      "id": "bbade357-5769-403f-baf2-f725bf9ecbe0",
+      "name": "Digital Templates",
+      "description": {
+        "content": "Create and manage email delivery templates for rewards",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d758d3fc-c7a6-4744-98b1-f233ada480fb",
+          "name": "List Digital Templates",
+          "request": {
+            "name": "List Digital Templates",
+            "description": {
+              "content": "List all configured digital email delivery templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79f27878-19e8-4f76-a394-60258f55d1b4",
+              "name": "List of digital templates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"templates\": [\n    {\n      \"etid\": \"string\",\n      \"name\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1949-01-26T12:29:32.732Z\",\n      \"updatedAt\": \"1964-07-08T21:50:01.969Z\"\n    },\n    {\n      \"etid\": \"string\",\n      \"name\": \"string\",\n      \"subject\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1985-05-16T16:19:14.733Z\",\n      \"updatedAt\": \"1954-09-08T21:14:12.944Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d8fe62d-ebc7-4e62-8a4f-bac7809a3c57",
+          "name": "Create Digital Template",
+          "request": {
+            "name": "Create Digital Template",
+            "description": {
+              "content": "Create a new email delivery template for reward notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "75b358b5-2c49-4758-a8a3-c3bf43471186",
+              "name": "Template created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"1997-04-24T09:35:22.016Z\",\n  \"updatedAt\": \"1987-04-17T07:37:32.612Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94743ef8-0605-4e2b-be06-dd1bdced6bf9",
+          "name": "Get Digital Template",
+          "request": {
+            "name": "Get Digital Template",
+            "description": {
+              "content": "Retrieve a specific digital email template by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89aa1cde-79aa-461c-bb40-669b531a7ca3",
+              "name": "Template details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"1997-04-24T09:35:22.016Z\",\n  \"updatedAt\": \"1987-04-17T07:37:32.612Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a70ab9f1-1239-4c28-b9bd-63d48a0b1e36",
+          "name": "Update Digital Template",
+          "request": {
+            "name": "Update Digital Template",
+            "description": {
+              "content": "Update an existing digital email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a278817-1a8e-475d-8f46-7ae522892b65",
+              "name": "Template updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"subject\": \"<string>\",\n  \"headerText\": \"<string>\",\n  \"messageText\": \"<string>\",\n  \"headerImage\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"etid\": \"string\",\n  \"name\": \"string\",\n  \"subject\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"1997-04-24T09:35:22.016Z\",\n  \"updatedAt\": \"1987-04-17T07:37:32.612Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43d349ce-62e6-4a38-a959-c6140dcfd061",
+          "name": "Delete Digital Template",
+          "request": {
+            "name": "Delete Digital Template",
+            "description": {
+              "content": "Delete a digital email template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "digitalTemplates",
+                ":etid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "etid",
+                  "description": "(Required) Email template ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aec61b53-2eb4-46c0-a4ff-b3c9fdc5474e",
+              "name": "Template deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "digitalTemplates",
+                    ":etid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "etid",
+                      "description": "(Required) Email template ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9aa62df1-24f3-4b31-a44e-8f08393e5207",
+    "name": "Tango RaaS Accounts Digital Templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

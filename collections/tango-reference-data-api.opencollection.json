@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Reference Data API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reference Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Exchange Rates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/exchangerates"
+          },
+          "docs": "Retrieve current exchange rates for all supported currencies."
+        },
+        {
+          "info": {
+            "name": "List Reward Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/rewardCountries"
+          },
+          "docs": "List all countries where digital rewards can be delivered."
+        },
+        {
+          "info": {
+            "name": "List Credential Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/credentialtypes"
+          },
+          "docs": "Retrieve available credential types for reward delivery."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

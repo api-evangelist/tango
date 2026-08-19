@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/accounts"
+          },
+          "docs": "Retrieve a list of all accounts across all customers."
+        },
+        {
+          "info": {
+            "name": "List Customer Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ]
+          },
+          "docs": "Retrieve all accounts for a specific customer."
+        },
+        {
+          "info": {
+            "name": "Create Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new account for a specific customer."
+        },
+        {
+          "info": {
+            "name": "Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific account including current balance."
+        },
+        {
+          "info": {
+            "name": "Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier/accounts/:accountIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              },
+              {
+                "name": "accountIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the account"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify settings for an existing account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

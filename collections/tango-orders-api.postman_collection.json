@@ -1,0 +1,509 @@
+{
+  "item": [
+    {
+      "id": "0d6db9cd-7600-4874-8425-95c1de0f711f",
+      "name": "Orders",
+      "description": {
+        "content": "Place and manage reward orders",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "03aea253-9748-4f2d-a22c-f67587347c9c",
+          "name": "List Orders",
+          "request": {
+            "name": "List Orders",
+            "description": {
+              "content": "Retrieve a list of orders placed by the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Filter orders from this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "Filter orders up to this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "elements",
+                  "value": "100",
+                  "description": "Number of results per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Pagination offset"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec43e0ef-fa0e-4a62-896f-b12e053922c9",
+              "name": "List of orders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "elements",
+                      "value": "100"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"orders\": [\n    {\n      \"referenceOrderID\": \"string\",\n      \"orderRefID\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"amount\": 7494.953581348863,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"lineItems\": [\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 5475.018696005904,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"FROZEN\",\n          \"createdAt\": \"1980-08-30T03:31:54.959Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 9627.540856705926,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"FROZEN\",\n          \"createdAt\": \"1973-09-11T18:49:37.127Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"createdAt\": \"1976-09-27T16:10:51.904Z\"\n    },\n    {\n      \"referenceOrderID\": \"string\",\n      \"orderRefID\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"amount\": 941.433588313042,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"lineItems\": [\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 8056.97392868821,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"PENDING\",\n          \"createdAt\": \"2020-12-09T13:44:22.792Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        },\n        {\n          \"referenceLineItemId\": \"string\",\n          \"referenceOrderID\": \"string\",\n          \"amount\": 5950.018133389662,\n          \"currencyCode\": \"string\",\n          \"utid\": \"string\",\n          \"rewardName\": \"string\",\n          \"brandCode\": \"string\",\n          \"brandName\": \"string\",\n          \"status\": \"CANCELLED\",\n          \"createdAt\": \"2016-01-17T05:09:32.276Z\",\n          \"fulfillment\": {\n            \"fulfillmentType\": \"string\",\n            \"cardNumber\": \"string\",\n            \"cardPin\": \"string\",\n            \"redemptionUrl\": \"string\",\n            \"credentialList\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        }\n      ],\n      \"createdAt\": \"1981-10-05T09:49:05.702Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dca2780-f6f0-4f88-b0c4-e718181bd001",
+          "name": "Create Order",
+          "request": {
+            "name": "Create Order",
+            "description": {
+              "content": "Place a new reward order. This deducts the reward value from the specified account balance and delivers the digital reward to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"sender\": {\n    \"name\": \"<string>\",\n    \"email\": \"<email>\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c51959b0-caa1-4a4a-abed-e2ade22d387a",
+              "name": "Order placed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"email\": \"sOZqaSYjlxiG@cxeDuXifvoICVBQfSPxVbxdEn.tt\"\n  },\n  \"sender\": {\n    \"name\": \"string\",\n    \"email\": \"dmQUneuUHpEhD6@lxsiBKXRwetjRznrUBfYHlZpE.grb\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 1822.6814592678375,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4449.288531137324,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FULFILLED\",\n      \"createdAt\": \"1971-07-04T23:34:26.522Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 2246.3212337575255,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"2002-01-18T14:58:49.178Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"2018-02-13T23:23:52.265Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8788ac9c-0109-4bb0-8a91-3592eae2fde7",
+              "name": "Bad request - invalid parameters or missing required fields",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"utid\": \"<string>\",\n  \"recipient\": {\n    \"name\": \"string\",\n    \"email\": \"sOZqaSYjlxiG@cxeDuXifvoICVBQfSPxVbxdEn.tt\"\n  },\n  \"sender\": {\n    \"name\": \"string\",\n    \"email\": \"dmQUneuUHpEhD6@lxsiBKXRwetjRznrUBfYHlZpE.grb\"\n  },\n  \"message\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"etid\": \"<string>\",\n  \"externalRefID\": \"<string>\",\n  \"sendEmail\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"timestamp\": \"1947-06-19T16:51:51.052Z\",\n  \"requestId\": \"string\",\n  \"path\": \"string\",\n  \"httpStatusCode\": 7466,\n  \"httpStatus\": \"string\",\n  \"message\": \"string\",\n  \"errors\": [\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    },\n    {\n      \"field\": \"string\",\n      \"message\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "859398f5-55f5-419f-a355-26e82f4ec3b7",
+          "name": "Get Order",
+          "request": {
+            "name": "Get Order",
+            "description": {
+              "content": "Retrieve details of a specific order by reference ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":referenceOrderID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceOrderID",
+                  "description": "(Required) The reference order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "462860c1-0a42-4141-8d2f-a49ca8f2b5dd",
+              "name": "Order details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":referenceOrderID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceOrderID",
+                      "description": "(Required) The reference order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 1822.6814592678375,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4449.288531137324,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FULFILLED\",\n      \"createdAt\": \"1971-07-04T23:34:26.522Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 2246.3212337575255,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"2002-01-18T14:58:49.178Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"2018-02-13T23:23:52.265Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9293895-c612-414f-a747-9c3818a311a6",
+          "name": "Resend Order",
+          "request": {
+            "name": "Resend Order",
+            "description": {
+              "content": "Resend a fulfilled order to the recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "orders",
+                ":referenceOrderID",
+                "resends"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "referenceOrderID",
+                  "description": "(Required) The reference order ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25186462-3b7c-4aa8-9710-f1a0ab1d65ca",
+              "name": "Order resent",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "orders",
+                    ":referenceOrderID",
+                    "resends"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "referenceOrderID",
+                      "description": "(Required) The reference order ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"referenceOrderID\": \"string\",\n  \"orderRefID\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"amount\": 1822.6814592678375,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"lineItems\": [\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 4449.288531137324,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FULFILLED\",\n      \"createdAt\": \"1971-07-04T23:34:26.522Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"referenceLineItemId\": \"string\",\n      \"referenceOrderID\": \"string\",\n      \"amount\": 2246.3212337575255,\n      \"currencyCode\": \"string\",\n      \"utid\": \"string\",\n      \"rewardName\": \"string\",\n      \"brandCode\": \"string\",\n      \"brandName\": \"string\",\n      \"status\": \"FROZEN\",\n      \"createdAt\": \"2002-01-18T14:58:49.178Z\",\n      \"fulfillment\": {\n        \"fulfillmentType\": \"string\",\n        \"cardNumber\": \"string\",\n        \"cardPin\": \"string\",\n        \"redemptionUrl\": \"string\",\n        \"credentialList\": [\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          },\n          {\n            \"label\": \"string\",\n            \"value\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"createdAt\": \"2018-02-13T23:23:52.265Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6f88d883-9030-4262-9860-cc538f1b5f0a",
+    "name": "Tango RaaS Accounts Orders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

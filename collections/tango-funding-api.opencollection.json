@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Funding API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Funding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Credit Card Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/creditCardDeposits",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Fund an account by processing a credit card deposit."
+        },
+        {
+          "info": {
+            "name": "Get Credit Card Deposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCardDeposits/:depositId",
+            "params": [
+              {
+                "name": "depositId",
+                "value": "",
+                "type": "path",
+                "description": "The deposit identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific credit card deposit."
+        },
+        {
+          "info": {
+            "name": "List Credit Cards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCards"
+          },
+          "docs": "List all registered credit cards on the account."
+        },
+        {
+          "info": {
+            "name": "Register Credit Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/creditCards",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Register a new credit card for funding."
+        },
+        {
+          "info": {
+            "name": "Get Credit Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/creditCards/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path",
+                "description": "The credit card token"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific registered credit card."
+        },
+        {
+          "info": {
+            "name": "List Fund Transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/transferFunds"
+          },
+          "docs": "List fund transfer history for the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

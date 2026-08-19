@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Catalog API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Catalog",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Catalog",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/catalogs"
+          },
+          "docs": "Retrieve the full digital reward catalog including all available brands and products accessible to the authenticated customer."
+        },
+        {
+          "info": {
+            "name": "List Brand Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/brandCategories"
+          },
+          "docs": "Retrieve all available brand categories for catalog filtering."
+        },
+        {
+          "info": {
+            "name": "List Choice Products",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/choiceProducts"
+          },
+          "docs": "List all available Tango Choice products."
+        },
+        {
+          "info": {
+            "name": "Get Choice Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/choiceProducts/:utid",
+            "params": [
+              {
+                "name": "utid",
+                "value": "",
+                "type": "path",
+                "description": "The unique product identifier (UTID)"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific Choice product."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

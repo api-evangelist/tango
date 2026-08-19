@@ -1,0 +1,279 @@
+{
+  "item": [
+    {
+      "id": "f41220b3-0d21-423a-a67a-5b5b18d3d865",
+      "name": "Reference Data",
+      "description": {
+        "content": "Exchange rates, reward countries, and credential types",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "868e1c3b-0033-4fda-beee-64c0189326cc",
+          "name": "Get Exchange Rates",
+          "request": {
+            "name": "Get Exchange Rates",
+            "description": {
+              "content": "Retrieve current exchange rates for all supported currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "exchangerates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a907b79-7766-407b-ad0f-52fb05e1a373",
+              "name": "Current exchange rates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "exchangerates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"exchangeRates\": [\n    {\n      \"currencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"exchangeRate\": 1048.2108899711795,\n      \"updatedAt\": \"1993-09-10T12:55:55.475Z\"\n    },\n    {\n      \"currencyCode\": \"string\",\n      \"currencyName\": \"string\",\n      \"exchangeRate\": 5982.496862759923,\n      \"updatedAt\": \"1979-12-02T07:03:30.565Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddfc6295-b1df-4176-be7d-53e17a1e5735",
+          "name": "List Reward Countries",
+          "request": {
+            "name": "List Reward Countries",
+            "description": {
+              "content": "List all countries where digital rewards can be delivered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewardCountries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb2b5032-2de2-40f4-96ed-6895bc8710aa",
+              "name": "List of supported reward countries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewardCountries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"countries\": [\n    {\n      \"countryCode\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\"\n    },\n    {\n      \"countryCode\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb333055-d988-4709-a0ab-e5ee39aa059c",
+          "name": "List Credential Types",
+          "request": {
+            "name": "List Credential Types",
+            "description": {
+              "content": "Retrieve available credential types for reward delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "credentialtypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ffaacab3-0765-408d-b748-fac385ca5415",
+              "name": "List of credential types",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "credentialtypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credentialTypes\": [\n    {\n      \"credentialType\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"credentialType\": \"string\",\n      \"description\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "af79956a-bbcb-48d3-ae3a-c1ac34ea883c",
+    "name": "Tango RaaS Accounts Reference Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

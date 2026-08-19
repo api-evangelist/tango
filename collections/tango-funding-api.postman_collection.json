@@ -1,0 +1,591 @@
+{
+  "item": [
+    {
+      "id": "64d6c0b5-8263-4d56-bd43-db28ccedfd6b",
+      "name": "Funding",
+      "description": {
+        "content": "Fund accounts via credit card deposits and fund transfers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "51bd50c7-0b93-4794-bbfc-afd8a5a7d552",
+          "name": "Create Credit Card Deposit",
+          "request": {
+            "name": "Create Credit Card Deposit",
+            "description": {
+              "content": "Fund an account by processing a credit card deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCardDeposits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"creditCardToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fc56d543-0a77-424b-9cab-d4943b009922",
+              "name": "Deposit created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCardDeposits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"customerIdentifier\": \"<string>\",\n  \"accountIdentifier\": \"<string>\",\n  \"amount\": \"<double>\",\n  \"creditCardToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositId\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"amount\": 9519.794538891003,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"2026-01-25T17:25:54.244Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf8f6025-4060-453e-8d16-4d99ba601a43",
+          "name": "Get Credit Card Deposit",
+          "request": {
+            "name": "Get Credit Card Deposit",
+            "description": {
+              "content": "Retrieve details of a specific credit card deposit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCardDeposits",
+                ":depositId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "depositId",
+                  "description": "(Required) The deposit identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a67124b-cf2a-44d5-9992-2737791a7748",
+              "name": "Deposit details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCardDeposits",
+                    ":depositId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "depositId",
+                      "description": "(Required) The deposit identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"depositId\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"amount\": 9519.794538891003,\n  \"currencyCode\": \"string\",\n  \"status\": \"string\",\n  \"createdAt\": \"2026-01-25T17:25:54.244Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2c27ca1d-a477-4fe3-80eb-3542530daab2",
+          "name": "List Credit Cards",
+          "request": {
+            "name": "List Credit Cards",
+            "description": {
+              "content": "List all registered credit cards on the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e379e145-8fff-4337-a46a-1e192936449d",
+              "name": "List of registered credit cards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"creditCards\": [\n    {\n      \"token\": \"string\",\n      \"lastFour\": \"string\",\n      \"expirationDate\": \"string\",\n      \"cardType\": \"DISCOVER\",\n      \"status\": \"string\"\n    },\n    {\n      \"token\": \"string\",\n      \"lastFour\": \"string\",\n      \"expirationDate\": \"string\",\n      \"cardType\": \"MASTERCARD\",\n      \"status\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ff250b9e-f0b5-45ac-a70a-eef23795b213",
+          "name": "Register Credit Card",
+          "request": {
+            "name": "Register Credit Card",
+            "description": {
+              "content": "Register a new credit card for funding.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cardNumber\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"cvv\": \"<string>\",\n  \"billingAddress\": {\n    \"addressLine1\": \"<string>\",\n    \"addressLine2\": \"<string>\",\n    \"city\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postalCode\": \"<string>\",\n    \"country\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25aa49b7-1bd3-41f0-b2cb-fcab9bdd1ae1",
+              "name": "Credit card registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"cardNumber\": \"<string>\",\n  \"expirationDate\": \"<string>\",\n  \"cvv\": \"<string>\",\n  \"billingAddress\": {\n    \"addressLine1\": \"string\",\n    \"addressLine2\": \"string\",\n    \"city\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\",\n    \"country\": \"string\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"lastFour\": \"string\",\n  \"expirationDate\": \"string\",\n  \"cardType\": \"AMEX\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ead710ef-87fc-45a4-8188-d11c01f7a615",
+          "name": "Get Credit Card",
+          "request": {
+            "name": "Get Credit Card",
+            "description": {
+              "content": "Retrieve details of a specific registered credit card.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "creditCards",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) The credit card token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "226a77f0-ed8c-4d31-9654-b5261d9ec9e5",
+              "name": "Credit card details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "creditCards",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) The credit card token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\",\n  \"lastFour\": \"string\",\n  \"expirationDate\": \"string\",\n  \"cardType\": \"AMEX\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a3580752-75d4-4b11-9553-0bc718e05f7e",
+          "name": "List Fund Transfers",
+          "request": {
+            "name": "List Fund Transfers",
+            "description": {
+              "content": "List fund transfer history for the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "transferFunds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "de94e56b-bf95-4eff-9995-70e80dbcc43a",
+              "name": "List of fund transfers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "transferFunds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"transfers\": [\n    {\n      \"transferId\": \"string\",\n      \"fromAccountIdentifier\": \"string\",\n      \"toAccountIdentifier\": \"string\",\n      \"amount\": 2679.268802371693,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1979-04-04T13:45:46.253Z\"\n    },\n    {\n      \"transferId\": \"string\",\n      \"fromAccountIdentifier\": \"string\",\n      \"toAccountIdentifier\": \"string\",\n      \"amount\": 884.0092669326294,\n      \"currencyCode\": \"string\",\n      \"status\": \"string\",\n      \"createdAt\": \"1961-05-19T13:46:00.755Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "981d9cee-5845-485a-acbf-19cec932420e",
+    "name": "Tango RaaS Accounts Funding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

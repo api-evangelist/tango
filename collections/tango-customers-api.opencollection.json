@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Customers API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Customers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers"
+          },
+          "docs": "Retrieve a list of all customers in the platform."
+        },
+        {
+          "info": {
+            "name": "Create Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/customers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new customer account in the platform."
+        },
+        {
+          "info": {
+            "name": "Get Customer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/customers/:customerIdentifier",
+            "params": [
+              {
+                "name": "customerIdentifier",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the customer"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific customer."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

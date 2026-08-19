@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Digital Templates API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Digital Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Digital Templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates"
+          },
+          "docs": "List all configured digital email delivery templates."
+        },
+        {
+          "info": {
+            "name": "Create Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new email delivery template for reward notifications."
+        },
+        {
+          "info": {
+            "name": "Get Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific digital email template by ID."
+        },
+        {
+          "info": {
+            "name": "Update Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing digital email template."
+        },
+        {
+          "info": {
+            "name": "Delete Digital Template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.tangocard.com/raas/v2/digitalTemplates/:etid",
+            "params": [
+              {
+                "name": "etid",
+                "value": "",
+                "type": "path",
+                "description": "Email template ID"
+              }
+            ]
+          },
+          "docs": "Delete a digital email template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

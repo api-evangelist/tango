@@ -1,0 +1,705 @@
+{
+  "item": [
+    {
+      "id": "e669cb54-1746-4e4d-b014-02745f86f1ea",
+      "name": "Low Balance Alerts",
+      "description": {
+        "content": "Configure low balance alerts for accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b6417927-4d72-44c4-ac82-f834b0221f8e",
+          "name": "Create Low Balance Alert",
+          "request": {
+            "name": "Create Low Balance Alert",
+            "description": {
+              "content": "Set a low balance alert threshold for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9adf5c1d-d255-4928-9e31-d55693a2670e",
+              "name": "Alert created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 6502.810867111319,\n  \"emailAddress\": \"poHudQQs-Ka@uklGQF.abw\",\n  \"status\": \"string\",\n  \"createdAt\": \"1977-02-03T09:04:01.251Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ebd3d9cc-2fea-435d-bf12-5b8b7fd9a71d",
+          "name": "List Low Balance Alerts",
+          "request": {
+            "name": "List Low Balance Alerts",
+            "description": {
+              "content": "List all low balance alerts for a specific account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4323282-476b-4ee5-ae94-eb198a259d5a",
+              "name": "List of low balance alerts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"alerts\": [\n    {\n      \"balanceAlertID\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"threshold\": 7311.432624331178,\n      \"emailAddress\": \"6fv-u5@deuStwOK.ldt\",\n      \"status\": \"string\",\n      \"createdAt\": \"2013-09-07T03:21:46.505Z\"\n    },\n    {\n      \"balanceAlertID\": \"string\",\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"threshold\": 3848.080831030778,\n      \"emailAddress\": \"hQxU9k6UOqY0QM@cSXxIVUnUQGpGCQHcnZUMnDKxVJbDqq.dtrx\",\n      \"status\": \"string\",\n      \"createdAt\": \"1983-08-22T23:16:55.448Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaa27abd-051d-4a77-b826-8808bba3bc9c",
+          "name": "Get Low Balance Alert",
+          "request": {
+            "name": "Get Low Balance Alert",
+            "description": {
+              "content": "Retrieve a specific low balance alert.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e103d777-f3b8-4ad6-88ae-da84a7fd158e",
+              "name": "Low balance alert details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 6502.810867111319,\n  \"emailAddress\": \"poHudQQs-Ka@uklGQF.abw\",\n  \"status\": \"string\",\n  \"createdAt\": \"1977-02-03T09:04:01.251Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e842f8c-07fc-44ff-a2fe-4812f7112084",
+          "name": "Update Low Balance Alert",
+          "request": {
+            "name": "Update Low Balance Alert",
+            "description": {
+              "content": "Update an existing low balance alert threshold.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b9629820-c3ea-4f16-8f69-aa0ffcfbd01b",
+              "name": "Alert updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"threshold\": \"<double>\",\n  \"emailAddress\": \"<email>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"balanceAlertID\": \"string\",\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"threshold\": 6502.810867111319,\n  \"emailAddress\": \"poHudQQs-Ka@uklGQF.abw\",\n  \"status\": \"string\",\n  \"createdAt\": \"1977-02-03T09:04:01.251Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0a889c3-3ade-4541-8fee-a69773fea17c",
+          "name": "Delete Low Balance Alert",
+          "request": {
+            "name": "Delete Low Balance Alert",
+            "description": {
+              "content": "Remove a low balance alert from an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier",
+                "lowbalance",
+                ":balanceAlertID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "balanceAlertID",
+                  "description": "(Required) Unique identifier for the low balance alert"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15b5bc06-9316-4534-8c85-4929004cb81c",
+              "name": "Alert deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier",
+                    "lowbalance",
+                    ":balanceAlertID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "balanceAlertID",
+                      "description": "(Required) Unique identifier for the low balance alert"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0f37c447-f24c-49b5-ada0-1d741cc46e7c",
+    "name": "Tango RaaS Accounts Low Balance Alerts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

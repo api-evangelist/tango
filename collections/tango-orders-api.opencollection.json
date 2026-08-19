@@ -1,0 +1,115 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Orders API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Orders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/orders",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders from this date"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Filter orders up to this date"
+              },
+              {
+                "name": "elements",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of orders placed by the account."
+        },
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Place a new reward order. This deducts the reward value from the specified account balance and delivers the digital reward to the recipient."
+        },
+        {
+          "info": {
+            "name": "Get Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/orders/:referenceOrderID",
+            "params": [
+              {
+                "name": "referenceOrderID",
+                "value": "",
+                "type": "path",
+                "description": "The reference order ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order by reference ID."
+        },
+        {
+          "info": {
+            "name": "Resend Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/orders/:referenceOrderID/resends",
+            "params": [
+              {
+                "name": "referenceOrderID",
+                "value": "",
+                "type": "path",
+                "description": "The reference order ID"
+              }
+            ]
+          },
+          "docs": "Resend a fulfilled order to the recipient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

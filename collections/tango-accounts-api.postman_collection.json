@@ -1,0 +1,589 @@
+{
+  "item": [
+    {
+      "id": "a43368ed-3b8f-4380-9625-b09bf502c5fc",
+      "name": "Accounts",
+      "description": {
+        "content": "Manage sub-accounts for customers including balances and funding",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab9ece5d-37d2-4d7f-bda8-3445328aee21",
+          "name": "List All Accounts",
+          "request": {
+            "name": "List All Accounts",
+            "description": {
+              "content": "Retrieve a list of all accounts across all customers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35ee684e-128e-45ba-b5c5-86ae0b3d0698",
+              "name": "List of accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 2637.773194913624,\n      \"status\": \"active\",\n      \"createdAt\": \"2025-09-10T07:55:49.052Z\",\n      \"updatedAt\": \"1965-02-02T03:32:58.518Z\"\n    },\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 2507.073234204654,\n      \"status\": \"inactive\",\n      \"createdAt\": \"1988-10-21T13:50:07.549Z\",\n      \"updatedAt\": \"1962-11-30T12:56:03.555Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75150782-ebe9-4d45-a137-3d12db1b4538",
+          "name": "List Customer Accounts",
+          "request": {
+            "name": "List Customer Accounts",
+            "description": {
+              "content": "Retrieve all accounts for a specific customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5873b1bf-998c-4f1d-8fd8-a642cf20e781",
+              "name": "List of accounts for the customer",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 2637.773194913624,\n      \"status\": \"active\",\n      \"createdAt\": \"2025-09-10T07:55:49.052Z\",\n      \"updatedAt\": \"1965-02-02T03:32:58.518Z\"\n    },\n    {\n      \"accountIdentifier\": \"string\",\n      \"customerIdentifier\": \"string\",\n      \"displayName\": \"string\",\n      \"currencyCode\": \"string\",\n      \"currentBalance\": 2507.073234204654,\n      \"status\": \"inactive\",\n      \"createdAt\": \"1988-10-21T13:50:07.549Z\",\n      \"updatedAt\": \"1962-11-30T12:56:03.555Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4eeea98-34d2-48ee-9ec6-624c492cd7b2",
+          "name": "Create Account",
+          "request": {
+            "name": "Create Account",
+            "description": {
+              "content": "Create a new account for a specific customer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"currencyCode\": \"USD\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef81de54-22f2-4376-be74-4e52e1f59ce2",
+              "name": "Account created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountIdentifier\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"currencyCode\": \"USD\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 4016.1268138877813,\n  \"status\": \"inactive\",\n  \"createdAt\": \"2026-01-12T16:49:11.373Z\",\n  \"updatedAt\": \"1993-12-13T08:14:29.787Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99e68a7e-28f4-400f-bd6a-a4bc8791fad0",
+          "name": "Get Account",
+          "request": {
+            "name": "Get Account",
+            "description": {
+              "content": "Retrieve details of a specific account including current balance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3283067-414d-4d16-b7db-06e71248895a",
+              "name": "Account details with balance",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 4016.1268138877813,\n  \"status\": \"inactive\",\n  \"createdAt\": \"2026-01-12T16:49:11.373Z\",\n  \"updatedAt\": \"1993-12-13T08:14:29.787Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d65503a0-b7ae-445c-b020-6ee75c99c2c0",
+          "name": "Update Account",
+          "request": {
+            "name": "Update Account",
+            "description": {
+              "content": "Modify settings for an existing account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customers",
+                ":customerIdentifier",
+                "accounts",
+                ":accountIdentifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "customerIdentifier",
+                  "description": "(Required) Unique identifier for the customer"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountIdentifier",
+                  "description": "(Required) Unique identifier for the account"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"displayName\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c86ec8b-767d-4488-86ab-a7c097ddc9c1",
+              "name": "Account updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customers",
+                    ":customerIdentifier",
+                    "accounts",
+                    ":accountIdentifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "customerIdentifier",
+                      "description": "(Required) Unique identifier for the customer"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountIdentifier",
+                      "description": "(Required) Unique identifier for the account"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"displayName\": \"<string>\",\n  \"status\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountIdentifier\": \"string\",\n  \"customerIdentifier\": \"string\",\n  \"displayName\": \"string\",\n  \"currencyCode\": \"string\",\n  \"currentBalance\": 4016.1268138877813,\n  \"status\": \"inactive\",\n  \"createdAt\": \"2026-01-12T16:49:11.373Z\",\n  \"updatedAt\": \"1993-12-13T08:14:29.787Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.tangocard.com/raas/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "00fc17d0-5945-4294-b637-2c0393ec08ee",
+    "name": "Tango RaaS Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.\n\nContact Support:\n Name: Tango Developer Support\n Email: devsupport@tangocard.com",
+      "type": "text/plain"
+    }
+  }
+}

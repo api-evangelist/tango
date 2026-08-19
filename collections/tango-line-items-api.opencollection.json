@@ -1,0 +1,206 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Tango RaaS Accounts Line Items API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Line Items",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Line Items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems",
+            "params": [
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "elements",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all order line items."
+        },
+        {
+          "info": {
+            "name": "List Line Item Reason Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/reasonCodes"
+          },
+          "docs": "Retrieve available reason codes for line item status changes."
+        },
+        {
+          "info": {
+            "name": "Get Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific order line item."
+        },
+        {
+          "info": {
+            "name": "Update Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update metadata or status on a line item."
+        },
+        {
+          "info": {
+            "name": "Cancel Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/cancel",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Cancel a pending line item before fulfillment."
+        },
+        {
+          "info": {
+            "name": "Freeze Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/freeze",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Freeze a line item to temporarily suspend delivery."
+        },
+        {
+          "info": {
+            "name": "Unfreeze Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/unfreeze",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Unfreeze a previously frozen line item to resume delivery."
+        },
+        {
+          "info": {
+            "name": "Reissue Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/reissue",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Reissue a failed or expired line item."
+        },
+        {
+          "info": {
+            "name": "Resend Line Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.tangocard.com/raas/v2/lineItems/:referenceLineItemId/resends",
+            "params": [
+              {
+                "name": "referenceLineItemId",
+                "value": "",
+                "type": "path",
+                "description": "The reference line item ID"
+              }
+            ]
+          },
+          "docs": "Resend a fulfilled line item to the recipient."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
