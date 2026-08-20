@@ -38,6 +38,8 @@ apis:
   humanURL: https://developers.tangocard.com/
   baseURL: https://api.tangocard.com/raas/v2
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -206,6 +208,8 @@ apis:
   humanURL: https://developers.tangocard.com/
   baseURL: https://api.tangocard.com/raas/v2
   tags:
+  - Order
+  tags_raw:
   - Orders
   properties:
   - type: OpenAPI
