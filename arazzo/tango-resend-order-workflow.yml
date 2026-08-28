@@ -13,8 +13,8 @@ info:
     the transport layer and are not request parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: ordersApi
+  url: ../openapi/tango-orders-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: resend-order

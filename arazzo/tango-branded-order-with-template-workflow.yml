@@ -13,8 +13,11 @@ info:
     layer and are not request parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: digitalTemplatesApi
+  url: ../openapi/tango-digital-templates-api-openapi.yml
+  type: openapi
+- name: ordersApi
+  url: ../openapi/tango-orders-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: branded-order-with-template

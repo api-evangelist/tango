@@ -13,8 +13,11 @@ info:
     the transport layer and are not request parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: accountsApi
+  url: ../openapi/tango-accounts-api-openapi.yml
+  type: openapi
+- name: ordersApi
+  url: ../openapi/tango-orders-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: place-order-with-balance-check

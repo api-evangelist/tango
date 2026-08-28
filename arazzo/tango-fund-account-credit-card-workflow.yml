@@ -13,8 +13,8 @@ info:
     request parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: fundingApi
+  url: ../openapi/tango-funding-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: fund-account-credit-card

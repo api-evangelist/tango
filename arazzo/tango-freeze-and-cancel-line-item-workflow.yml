@@ -13,8 +13,8 @@ info:
     parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: lineItemsApi
+  url: ../openapi/tango-line-items-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: freeze-and-cancel-line-item

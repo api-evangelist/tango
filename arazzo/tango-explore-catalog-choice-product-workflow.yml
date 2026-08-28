@@ -13,8 +13,8 @@ info:
     request parameters.
   version: 1.0.0
 sourceDescriptions:
-- name: tangoRaasApi
-  url: ../openapi/tango-raas-api-openapi.yml
+- name: catalogApi
+  url: ../openapi/tango-catalog-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: explore-catalog-choice-product
