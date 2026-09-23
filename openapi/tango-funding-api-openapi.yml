@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tango RaaS Accounts Funding API
+  title: Tango RaaS Funding API
   description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
   version: '2.0'
   termsOfService: https://www.tangocard.com/terms-of-service/
@@ -143,21 +143,25 @@ paths:
                       $ref: '#/components/schemas/FundTransfer'
 components:
   schemas:
-    Address:
+    CreditCardDeposit:
       type: object
       properties:
-        addressLine1:
+        depositId:
           type: string
-        addressLine2:
+        accountIdentifier:
           type: string
-        city:
+        customerIdentifier:
           type: string
-        state:
+        amount:
+          type: number
+          format: double
+        currencyCode:
           type: string
-        postalCode:
+        status:
           type: string
-        country:
+        createdAt:
           type: string
+          format: date-time
     CreditCardDepositRequest:
       type: object
       required:
@@ -174,6 +178,42 @@ components:
           type: number
           format: double
         creditCardToken:
+          type: string
+    CreditCard:
+      type: object
+      properties:
+        token:
+          type: string
+          description: Credit card token
+        lastFour:
+          type: string
+          description: Last four digits
+        expirationDate:
+          type: string
+          description: Expiration date (MM/YY)
+        cardType:
+          type: string
+          enum:
+          - VISA
+          - MASTERCARD
+          - AMEX
+          - DISCOVER
+        status:
+          type: string
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
           type: string
     FundTransfer:
       type: object
@@ -210,46 +250,6 @@ components:
           type: string
         billingAddress:
           $ref: '#/components/schemas/Address'
-    CreditCardDeposit:
-      type: object
-      properties:
-        depositId:
-          type: string
-        accountIdentifier:
-          type: string
-        customerIdentifier:
-          type: string
-        amount:
-          type: number
-          format: double
-        currencyCode:
-          type: string
-        status:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
-    CreditCard:
-      type: object
-      properties:
-        token:
-          type: string
-          description: Credit card token
-        lastFour:
-          type: string
-          description: Last four digits
-        expirationDate:
-          type: string
-          description: Expiration date (MM/YY)
-        cardType:
-          type: string
-          enum:
-          - VISA
-          - MASTERCARD
-          - AMEX
-          - DISCOVER
-        status:
-          type: string
   securitySchemes:
     basicAuth:
       type: http

@@ -1,15 +1,7 @@
 {
   "provider": "tango",
   "sources": [
-    "tango-accounts-api-openapi.yml",
-    "tango-catalog-api-openapi.yml",
-    "tango-customers-api-openapi.yml",
-    "tango-digital-templates-api-openapi.yml",
-    "tango-funding-api-openapi.yml",
-    "tango-line-items-api-openapi.yml",
-    "tango-low-balance-alerts-api-openapi.yml",
-    "tango-orders-api-openapi.yml",
-    "tango-reference-data-api-openapi.yml"
+    "_original/tango-raas-api-openapi.yml"
   ],
   "outputs": [
     "tango-accounts-api-openapi.yml",
@@ -25,6 +17,20 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "tango-raas-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "tango-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-catalog-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-customers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-digital-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-funding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-line-items-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-low-balance-alerts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "tango-reference-data-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

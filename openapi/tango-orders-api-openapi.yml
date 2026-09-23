@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Tango RaaS Accounts Orders API
+  title: Tango RaaS Orders API
   description: The Tango Rewards-as-a-Service (RaaS) API v2 enables companies to automate digital reward and incentive delivery. Access a global catalog of 3,100+ digital gift cards, prepaid cards, and charitable donations. Manage customer accounts, fund balances, place orders, configure email templates, and receive real-time webhook notifications.
   version: '2.0'
   termsOfService: https://www.tangocard.com/terms-of-service/
@@ -121,38 +121,42 @@ paths:
                 $ref: '#/components/schemas/Order'
 components:
   schemas:
-    LineItem:
+    Sender:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    Error:
       type: object
       properties:
-        referenceLineItemId:
-          type: string
-        referenceOrderID:
-          type: string
-        amount:
-          type: number
-          format: double
-        currencyCode:
-          type: string
-        utid:
-          type: string
-        rewardName:
-          type: string
-        brandCode:
-          type: string
-        brandName:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - FULFILLED
-          - CANCELLED
-          - FROZEN
-        createdAt:
+        timestamp:
           type: string
           format: date-time
-        fulfillment:
-          $ref: '#/components/schemas/Fulfillment'
+        requestId:
+          type: string
+        path:
+          type: string
+        httpStatusCode:
+          type: integer
+        httpStatus:
+          type: string
+        message:
+          type: string
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+              message:
+                type: string
     CreateOrderRequest:
       type: object
       required:
@@ -239,6 +243,38 @@ components:
                 type: string
               value:
                 type: string
+    LineItem:
+      type: object
+      properties:
+        referenceLineItemId:
+          type: string
+        referenceOrderID:
+          type: string
+        amount:
+          type: number
+          format: double
+        currencyCode:
+          type: string
+        utid:
+          type: string
+        rewardName:
+          type: string
+        brandCode:
+          type: string
+        brandName:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - FULFILLED
+          - CANCELLED
+          - FROZEN
+        createdAt:
+          type: string
+          format: date-time
+        fulfillment:
+          $ref: '#/components/schemas/Fulfillment'
     Recipient:
       type: object
       required:
@@ -250,42 +286,13 @@ components:
         email:
           type: string
           format: email
-    Error:
-      type: object
-      properties:
-        timestamp:
-          type: string
-          format: date-time
-        requestId:
-          type: string
-        path:
-          type: string
-        httpStatusCode:
-          type: integer
-        httpStatus:
-          type: string
-        message:
-          type: string
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              field:
-                type: string
-              message:
-                type: string
-    Sender:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or missing required fields
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     referenceOrderID:
       name: referenceOrderID
@@ -294,13 +301,6 @@ components:
       schema:
         type: string
       description: The reference order ID
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters or missing required fields
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http
