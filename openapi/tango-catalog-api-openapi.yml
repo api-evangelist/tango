@@ -102,54 +102,6 @@ paths:
                 $ref: '#/components/schemas/ChoiceProduct'
 components:
   schemas:
-    ChoiceProduct:
-      type: object
-      properties:
-        utid:
-          type: string
-        name:
-          type: string
-        description:
-          type: string
-        currencyCode:
-          type: string
-        minValue:
-          type: number
-          format: double
-        maxValue:
-          type: number
-          format: double
-        status:
-          type: string
-    Brand:
-      type: object
-      properties:
-        brandCode:
-          type: string
-          description: Unique brand identifier
-        brandName:
-          type: string
-        description:
-          type: string
-        imageUrls:
-          type: object
-          properties:
-            200w-326ppi:
-              type: string
-            200w:
-              type: string
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/Item'
-        createdDate:
-          type: string
-          format: date-time
-        lastUpdateDate:
-          type: string
-          format: date-time
-        status:
-          type: string
     BrandCategory:
       type: object
       properties:
@@ -191,6 +143,54 @@ components:
           type: array
           items:
             type: string
+        status:
+          type: string
+    Brand:
+      type: object
+      properties:
+        brandCode:
+          type: string
+          description: Unique brand identifier
+        brandName:
+          type: string
+        description:
+          type: string
+        imageUrls:
+          type: object
+          properties:
+            200w-326ppi:
+              type: string
+            200w:
+              type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+        createdDate:
+          type: string
+          format: date-time
+        lastUpdateDate:
+          type: string
+          format: date-time
+        status:
+          type: string
+    ChoiceProduct:
+      type: object
+      properties:
+        utid:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        currencyCode:
+          type: string
+        minValue:
+          type: number
+          format: double
+        maxValue:
+          type: number
+          format: double
         status:
           type: string
   securitySchemes:

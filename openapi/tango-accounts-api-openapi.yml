@@ -124,6 +124,29 @@ paths:
                 $ref: '#/components/schemas/Account'
 components:
   schemas:
+    CreateAccountRequest:
+      type: object
+      required:
+      - accountIdentifier
+      - displayName
+      properties:
+        accountIdentifier:
+          type: string
+        displayName:
+          type: string
+        currencyCode:
+          type: string
+          default: USD
+    UpdateAccountRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
     Account:
       type: object
       properties:
@@ -154,37 +177,7 @@ components:
         updatedAt:
           type: string
           format: date-time
-    UpdateAccountRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
-    CreateAccountRequest:
-      type: object
-      required:
-      - accountIdentifier
-      - displayName
-      properties:
-        accountIdentifier:
-          type: string
-        displayName:
-          type: string
-        currencyCode:
-          type: string
-          default: USD
   parameters:
-    customerIdentifier:
-      name: customerIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the customer
     accountIdentifier:
       name: accountIdentifier
       in: path
@@ -192,6 +185,13 @@ components:
       schema:
         type: string
       description: Unique identifier for the account
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
   securitySchemes:
     basicAuth:
       type: http

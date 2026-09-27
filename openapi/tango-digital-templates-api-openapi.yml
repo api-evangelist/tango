@@ -109,6 +109,14 @@ paths:
         '204':
           description: Template deleted
 components:
+  parameters:
+    etid:
+      name: etid
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Email template ID
   schemas:
     CreateDigitalTemplateRequest:
       type: object
@@ -144,14 +152,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-  parameters:
-    etid:
-      name: etid
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Email template ID
   securitySchemes:
     basicAuth:
       type: http

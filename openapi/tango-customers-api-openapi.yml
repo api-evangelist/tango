@@ -107,6 +107,18 @@ components:
         updatedAt:
           type: string
           format: date-time
+    CreateCustomerRequest:
+      type: object
+      required:
+      - customerIdentifier
+      - displayName
+      properties:
+        customerIdentifier:
+          type: string
+          description: Unique identifier for the new customer
+        displayName:
+          type: string
+          description: Display name for the customer
     Error:
       type: object
       properties:
@@ -132,19 +144,13 @@ components:
                 type: string
               message:
                 type: string
-    CreateCustomerRequest:
-      type: object
-      required:
-      - customerIdentifier
-      - displayName
-      properties:
-        customerIdentifier:
-          type: string
-          description: Unique identifier for the new customer
-        displayName:
-          type: string
-          description: Display name for the customer
   responses:
+    Unauthorized:
+      description: Authentication credentials missing or invalid
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     BadRequest:
       description: Bad request - invalid parameters or missing required fields
       content:
@@ -153,12 +159,6 @@ components:
             $ref: '#/components/schemas/Error'
     NotFound:
       description: Resource not found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Authentication credentials missing or invalid
       content:
         application/json:
           schema:

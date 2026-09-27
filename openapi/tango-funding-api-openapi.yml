@@ -162,6 +162,37 @@ components:
         createdAt:
           type: string
           format: date-time
+    Address:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+        country:
+          type: string
+    RegisterCreditCardRequest:
+      type: object
+      required:
+      - cardNumber
+      - expirationDate
+      - cvv
+      - billingAddress
+      properties:
+        cardNumber:
+          type: string
+        expirationDate:
+          type: string
+        cvv:
+          type: string
+        billingAddress:
+          $ref: '#/components/schemas/Address'
     CreditCardDepositRequest:
       type: object
       required:
@@ -200,21 +231,6 @@ components:
           - DISCOVER
         status:
           type: string
-    Address:
-      type: object
-      properties:
-        addressLine1:
-          type: string
-        addressLine2:
-          type: string
-        city:
-          type: string
-        state:
-          type: string
-        postalCode:
-          type: string
-        country:
-          type: string
     FundTransfer:
       type: object
       properties:
@@ -234,22 +250,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    RegisterCreditCardRequest:
-      type: object
-      required:
-      - cardNumber
-      - expirationDate
-      - cvv
-      - billingAddress
-      properties:
-        cardNumber:
-          type: string
-        expirationDate:
-          type: string
-        cvv:
-          type: string
-        billingAddress:
-          $ref: '#/components/schemas/Address'
   securitySchemes:
     basicAuth:
       type: http
