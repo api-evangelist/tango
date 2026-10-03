@@ -121,7 +121,43 @@ paths:
         '204':
           description: Alert deleted
 components:
+  parameters:
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
+    balanceAlertID:
+      name: balanceAlertID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the low balance alert
+    accountIdentifier:
+      name: accountIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the account
   schemas:
+    LowBalanceAlertRequest:
+      type: object
+      required:
+      - threshold
+      - emailAddress
+      properties:
+        threshold:
+          type: number
+          format: double
+          description: Alert when balance drops below this amount
+        emailAddress:
+          type: string
+          format: email
+          description: Email address to notify
     LowBalanceAlert:
       type: object
       properties:
@@ -143,42 +179,6 @@ components:
         createdAt:
           type: string
           format: date-time
-    LowBalanceAlertRequest:
-      type: object
-      required:
-      - threshold
-      - emailAddress
-      properties:
-        threshold:
-          type: number
-          format: double
-          description: Alert when balance drops below this amount
-        emailAddress:
-          type: string
-          format: email
-          description: Email address to notify
-  parameters:
-    accountIdentifier:
-      name: accountIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the account
-    customerIdentifier:
-      name: customerIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the customer
-    balanceAlertID:
-      name: balanceAlertID
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the low balance alert
   securitySchemes:
     basicAuth:
       type: http
