@@ -118,22 +118,6 @@ components:
         type: string
       description: Email template ID
   schemas:
-    CreateDigitalTemplateRequest:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        subject:
-          type: string
-        headerText:
-          type: string
-        messageText:
-          type: string
-        headerImage:
-          type: string
-          format: uri
     DigitalTemplate:
       type: object
       properties:
@@ -152,6 +136,22 @@ components:
         updatedAt:
           type: string
           format: date-time
+    CreateDigitalTemplateRequest:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        subject:
+          type: string
+        headerText:
+          type: string
+        messageText:
+          type: string
+        headerImage:
+          type: string
+          format: uri
   securitySchemes:
     basicAuth:
       type: http

@@ -85,15 +85,19 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    customerIdentifier:
-      name: customerIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the customer
   schemas:
+    CreateCustomerRequest:
+      type: object
+      required:
+      - customerIdentifier
+      - displayName
+      properties:
+        customerIdentifier:
+          type: string
+          description: Unique identifier for the new customer
+        displayName:
+          type: string
+          description: Display name for the customer
     Customer:
       type: object
       properties:
@@ -115,18 +119,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    CreateCustomerRequest:
-      type: object
-      required:
-      - customerIdentifier
-      - displayName
-      properties:
-        customerIdentifier:
-          type: string
-          description: Unique identifier for the new customer
-        displayName:
-          type: string
-          description: Display name for the customer
     Error:
       type: object
       properties:
@@ -171,6 +163,14 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
   securitySchemes:
     basicAuth:
       type: http

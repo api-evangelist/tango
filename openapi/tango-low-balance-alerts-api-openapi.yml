@@ -129,13 +129,6 @@ components:
       schema:
         type: string
       description: Unique identifier for the customer
-    balanceAlertID:
-      name: balanceAlertID
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the low balance alert
     accountIdentifier:
       name: accountIdentifier
       in: path
@@ -143,21 +136,14 @@ components:
       schema:
         type: string
       description: Unique identifier for the account
+    balanceAlertID:
+      name: balanceAlertID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the low balance alert
   schemas:
-    LowBalanceAlertRequest:
-      type: object
-      required:
-      - threshold
-      - emailAddress
-      properties:
-        threshold:
-          type: number
-          format: double
-          description: Alert when balance drops below this amount
-        emailAddress:
-          type: string
-          format: email
-          description: Email address to notify
     LowBalanceAlert:
       type: object
       properties:
@@ -179,6 +165,20 @@ components:
         createdAt:
           type: string
           format: date-time
+    LowBalanceAlertRequest:
+      type: object
+      required:
+      - threshold
+      - emailAddress
+      properties:
+        threshold:
+          type: number
+          format: double
+          description: Alert when balance drops below this amount
+        emailAddress:
+          type: string
+          format: email
+          description: Email address to notify
   securitySchemes:
     basicAuth:
       type: http

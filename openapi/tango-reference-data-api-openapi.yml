@@ -88,16 +88,6 @@ components:
           type: string
         description:
           type: string
-    RewardCountry:
-      type: object
-      properties:
-        countryCode:
-          type: string
-          description: ISO 3166-1 alpha-2 country code
-        displayName:
-          type: string
-        currencyCode:
-          type: string
     ExchangeRate:
       type: object
       properties:
@@ -111,6 +101,16 @@ components:
         updatedAt:
           type: string
           format: date-time
+    RewardCountry:
+      type: object
+      properties:
+        countryCode:
+          type: string
+          description: ISO 3166-1 alpha-2 country code
+        displayName:
+          type: string
+        currencyCode:
+          type: string
   securitySchemes:
     basicAuth:
       type: http

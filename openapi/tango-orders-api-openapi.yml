@@ -120,7 +120,65 @@ paths:
               schema:
                 $ref: '#/components/schemas/Order'
 components:
+  parameters:
+    referenceOrderID:
+      name: referenceOrderID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The reference order ID
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters or missing required fields
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Sender:
+      type: object
+      required:
+      - name
+      - email
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+    LineItem:
+      type: object
+      properties:
+        referenceLineItemId:
+          type: string
+        referenceOrderID:
+          type: string
+        amount:
+          type: number
+          format: double
+        currencyCode:
+          type: string
+        utid:
+          type: string
+        rewardName:
+          type: string
+        brandCode:
+          type: string
+        brandName:
+          type: string
+        status:
+          type: string
+          enum:
+          - PENDING
+          - FULFILLED
+          - CANCELLED
+          - FROZEN
+        createdAt:
+          type: string
+          format: date-time
+        fulfillment:
+          $ref: '#/components/schemas/Fulfillment'
     CreateOrderRequest:
       type: object
       required:
@@ -161,58 +219,17 @@ components:
           type: boolean
           default: true
           description: Whether to send reward via email
-    LineItem:
+    Recipient:
       type: object
+      required:
+      - name
+      - email
       properties:
-        referenceLineItemId:
+        name:
           type: string
-        referenceOrderID:
+        email:
           type: string
-        amount:
-          type: number
-          format: double
-        currencyCode:
-          type: string
-        utid:
-          type: string
-        rewardName:
-          type: string
-        brandCode:
-          type: string
-        brandName:
-          type: string
-        status:
-          type: string
-          enum:
-          - PENDING
-          - FULFILLED
-          - CANCELLED
-          - FROZEN
-        createdAt:
-          type: string
-          format: date-time
-        fulfillment:
-          $ref: '#/components/schemas/Fulfillment'
-    Fulfillment:
-      type: object
-      properties:
-        fulfillmentType:
-          type: string
-        cardNumber:
-          type: string
-        cardPin:
-          type: string
-        redemptionUrl:
-          type: string
-        credentialList:
-          type: array
-          items:
-            type: object
-            properties:
-              label:
-                type: string
-              value:
-                type: string
+          format: email
     Order:
       type: object
       properties:
@@ -239,17 +256,26 @@ components:
         createdAt:
           type: string
           format: date-time
-    Recipient:
+    Fulfillment:
       type: object
-      required:
-      - name
-      - email
       properties:
-        name:
+        fulfillmentType:
           type: string
-        email:
+        cardNumber:
           type: string
-          format: email
+        cardPin:
+          type: string
+        redemptionUrl:
+          type: string
+        credentialList:
+          type: array
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              value:
+                type: string
     Error:
       type: object
       properties:
@@ -275,32 +301,6 @@ components:
                 type: string
               message:
                 type: string
-    Sender:
-      type: object
-      required:
-      - name
-      - email
-      properties:
-        name:
-          type: string
-        email:
-          type: string
-          format: email
-  parameters:
-    referenceOrderID:
-      name: referenceOrderID
-      in: path
-      required: true
-      schema:
-        type: string
-      description: The reference order ID
-  responses:
-    BadRequest:
-      description: Bad request - invalid parameters or missing required fields
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     basicAuth:
       type: http

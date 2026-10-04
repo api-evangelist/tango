@@ -203,13 +203,6 @@ paths:
                 $ref: '#/components/schemas/LineItem'
 components:
   schemas:
-    ReasonCode:
-      type: object
-      properties:
-        id:
-          type: string
-        description:
-          type: string
     LineItem:
       type: object
       properties:
@@ -242,6 +235,13 @@ components:
           format: date-time
         fulfillment:
           $ref: '#/components/schemas/Fulfillment'
+    ReasonCode:
+      type: object
+      properties:
+        id:
+          type: string
+        description:
+          type: string
     Fulfillment:
       type: object
       properties:

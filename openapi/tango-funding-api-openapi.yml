@@ -143,14 +143,14 @@ paths:
                       $ref: '#/components/schemas/FundTransfer'
 components:
   schemas:
-    CreditCardDeposit:
+    FundTransfer:
       type: object
       properties:
-        depositId:
+        transferId:
           type: string
-        accountIdentifier:
+        fromAccountIdentifier:
           type: string
-        customerIdentifier:
+        toAccountIdentifier:
           type: string
         amount:
           type: number
@@ -183,25 +183,37 @@ components:
           - DISCOVER
         status:
           type: string
-    FundTransfer:
+    RegisterCreditCardRequest:
+      type: object
+      required:
+      - cardNumber
+      - expirationDate
+      - cvv
+      - billingAddress
+      properties:
+        cardNumber:
+          type: string
+        expirationDate:
+          type: string
+        cvv:
+          type: string
+        billingAddress:
+          $ref: '#/components/schemas/Address'
+    Address:
       type: object
       properties:
-        transferId:
+        addressLine1:
           type: string
-        fromAccountIdentifier:
+        addressLine2:
           type: string
-        toAccountIdentifier:
+        city:
           type: string
-        amount:
-          type: number
-          format: double
-        currencyCode:
+        state:
           type: string
-        status:
+        postalCode:
           type: string
-        createdAt:
+        country:
           type: string
-          format: date-time
     CreditCardDepositRequest:
       type: object
       required:
@@ -219,37 +231,25 @@ components:
           format: double
         creditCardToken:
           type: string
-    Address:
+    CreditCardDeposit:
       type: object
       properties:
-        addressLine1:
+        depositId:
           type: string
-        addressLine2:
+        accountIdentifier:
           type: string
-        city:
+        customerIdentifier:
           type: string
-        state:
+        amount:
+          type: number
+          format: double
+        currencyCode:
           type: string
-        postalCode:
+        status:
           type: string
-        country:
+        createdAt:
           type: string
-    RegisterCreditCardRequest:
-      type: object
-      required:
-      - cardNumber
-      - expirationDate
-      - cvv
-      - billingAddress
-      properties:
-        cardNumber:
-          type: string
-        expirationDate:
-          type: string
-        cvv:
-          type: string
-        billingAddress:
-          $ref: '#/components/schemas/Address'
+          format: date-time
   securitySchemes:
     basicAuth:
       type: http

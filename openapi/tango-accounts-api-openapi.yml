@@ -139,6 +139,16 @@ components:
         type: string
       description: Unique identifier for the account
   schemas:
+    UpdateAccountRequest:
+      type: object
+      properties:
+        displayName:
+          type: string
+        status:
+          type: string
+          enum:
+          - active
+          - inactive
     CreateAccountRequest:
       type: object
       required:
@@ -182,16 +192,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-    UpdateAccountRequest:
-      type: object
-      properties:
-        displayName:
-          type: string
-        status:
-          type: string
-          enum:
-          - active
-          - inactive
   securitySchemes:
     basicAuth:
       type: http
