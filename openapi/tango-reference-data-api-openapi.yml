@@ -81,13 +81,6 @@ paths:
                       $ref: '#/components/schemas/CredentialType'
 components:
   schemas:
-    CredentialType:
-      type: object
-      properties:
-        credentialType:
-          type: string
-        description:
-          type: string
     ExchangeRate:
       type: object
       properties:
@@ -110,6 +103,13 @@ components:
         displayName:
           type: string
         currencyCode:
+          type: string
+    CredentialType:
+      type: object
+      properties:
+        credentialType:
+          type: string
+        description:
           type: string
   securitySchemes:
     basicAuth:

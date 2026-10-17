@@ -121,28 +121,6 @@ paths:
         '204':
           description: Alert deleted
 components:
-  parameters:
-    customerIdentifier:
-      name: customerIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the customer
-    accountIdentifier:
-      name: accountIdentifier
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the account
-    balanceAlertID:
-      name: balanceAlertID
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique identifier for the low balance alert
   schemas:
     LowBalanceAlert:
       type: object
@@ -179,6 +157,28 @@ components:
           type: string
           format: email
           description: Email address to notify
+  parameters:
+    balanceAlertID:
+      name: balanceAlertID
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the low balance alert
+    customerIdentifier:
+      name: customerIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the customer
+    accountIdentifier:
+      name: accountIdentifier
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique identifier for the account
   securitySchemes:
     basicAuth:
       type: http
